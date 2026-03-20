@@ -154,3 +154,171 @@
 03:06:58.010581 [info ]: 
 ==================== Execution Summary =====================
 Finished 'unknown' with 13 errors [26h 38m 51s]
+==================== 2026-03-20T03:13:42.407871Z | 0cad930c-0e72-41e1-9234-0f5f4f6bfc77 ====================
+03:13:42.408315 [info ]: Starting dbt LSP server
+03:13:42.408484 [info ]: Connecting to LSP client on port 8000
+03:13:42.412162 [info ]: Successfully connected to LSP client
+03:13:42.412218 [info ]: Creating LSP service...
+03:13:42.581616 [info ]: Creating LSP server...
+03:13:42.581648 [info ]: Starting LSP server...
+03:13:42.731888 [info ]: Loading profiles.yml
+03:13:42.790946 [info ]: Started loading project
+03:13:42.791779 [info ]: Loading profiles.yml
+03:13:42.818850 [info ]:    Started resolving packages from packages.yml
+03:13:43.102470 [info ]:   Finished [  0.28s] resolving packages from packages.yml (2 items)
+03:13:43.103124 [debug]:    Started loading packages
+03:13:43.127682 [debug]:     Loaded [  0.02s] packages
+03:13:43.129601 [info ]: Finished loading project [  0.34s]
+03:13:43.131069 [info ]: Started parsing
+03:13:43.268895 [error]: dbt1013: Invalid model definition `fabric_warehouse.+adapter`: invalid type: string "fabric", expected struct ProjectModelConfig at line 34 column 15
+  --> dbt_project.yml:34:15
+03:13:43.288603 [debug]: Finished parsing models\schema.yml [  0.00s]
+03:13:43.289054 [debug]: Finished parsing models\silver\fs\generic_test.yml [  0.00s]
+03:13:43.292152 [debug]: Finished parsing models\src_fabric_fs.yml [  0.00s]
+03:13:43.294594 [error]: dbt1060: Ignored unexpected key `"freshness"`. YAML path: `freshness`.
+  --> models\src_fabric_fs.yml:8:5
+03:13:43.295113 [error]: dbt1060: Ignored unexpected key `"loaded_at_field"`. YAML path: `loaded_at_field`.
+  --> models\src_fabric_fs.yml:11:5
+03:13:43.296793 [error]: dbt1060: Ignored unexpected key `"loaded_at_field"`. YAML path: `columns[1].loaded_at_field`.
+  --> models\src_fabric_fs.yml:81:13
+03:13:43.297435 [error]: dbt1060: Ignored unexpected key `"freshness"`. YAML path: `columns[1].freshness`.
+  --> models\src_fabric_fs.yml:82:13
+03:13:43.302783 [error]: dbt1060: Ignored unexpected key `"freshness"`. YAML path: `freshness`.
+  --> models\src_fabric_fs.yml:8:5
+03:13:43.303382 [error]: dbt1060: Ignored unexpected key `"loaded_at_field"`. YAML path: `loaded_at_field`.
+  --> models\src_fabric_fs.yml:11:5
+03:13:43.343298 [error]: dbt1060: Ignored unexpected key `"freshness"`. YAML path: `freshness`.
+  --> models\src_fabric_fs.yml:8:5
+03:13:43.344021 [error]: dbt1060: Ignored unexpected key `"loaded_at_field"`. YAML path: `loaded_at_field`.
+  --> models\src_fabric_fs.yml:11:5
+03:13:43.381612 [error]: dbt1060: Ignored unexpected key `"freshness"`. YAML path: `freshness`.
+  --> models\src_fabric_fs.yml:8:5
+03:13:43.382432 [error]: dbt1060: Ignored unexpected key `"loaded_at_field"`. YAML path: `loaded_at_field`.
+  --> models\src_fabric_fs.yml:11:5
+03:13:43.450852 [error]: dbt1060: Ignored unexpected key `"freshness"`. YAML path: `freshness`.
+  --> models\src_fabric_fs.yml:8:5
+03:13:43.452478 [error]: dbt1060: Ignored unexpected key `"loaded_at_field"`. YAML path: `loaded_at_field`.
+  --> models\src_fabric_fs.yml:11:5
+03:13:43.544792 [debug]: Finished parsing target\snapshots\silver\fs\st_fs_continents.sql [  0.02s]
+03:13:43.567503 [debug]: Finished parsing target\snapshots\silver\fs\st_fs_customers.sql [  0.02s]
+03:13:43.583914 [debug]: Finished parsing target\snapshots\silver\fs\st_fs_products.sql [  0.02s]
+03:13:43.601476 [debug]: Finished parsing target\snapshots\silver\fs\st_fs_suppliers.sql [  0.02s]
+03:13:43.616683 [info ]: 
+            UPDATE STATISTICS "DWH"."silver"."gt_fs_continents"(ContinentStatistics) ;
+
+
+03:13:43.617436 [debug]: Finished parsing models\gold\fs\gt_fs_continents.sql [  0.01s]
+03:13:43.624134 [info ]: 
+            UPDATE STATISTICS "DWH"."silver"."gt_fs_customers"(CustomerStatistics) ;
+
+
+03:13:43.624485 [debug]: Finished parsing models\gold\fs\gt_fs_customers.sql [  0.01s]
+03:13:43.627225 [debug]: Finished parsing models\gold\fs\gt_fs_dates.sql [  0.00s]
+03:13:43.630938 [info ]: 
+            UPDATE STATISTICS "DWH"."silver"."gt_fs_orders"(OrderFactStatistics) ;
+
+
+03:13:43.631441 [debug]: Finished parsing models\gold\fs\gt_fs_orders.sql [  0.00s]
+03:13:43.637369 [info ]: 
+            UPDATE STATISTICS "DWH"."silver"."gt_fs_products"(ProductStatistics) ;
+
+
+03:13:43.637764 [debug]: Finished parsing models\gold\fs\gt_fs_products.sql [  0.01s]
+03:13:43.643230 [info ]: 
+            UPDATE STATISTICS "DWH"."silver"."gt_fs_suppliers"(SupplierStatistics) ;
+
+
+03:13:43.643929 [debug]: Finished parsing models\gold\fs\gt_fs_suppliers.sql [  0.01s]
+03:13:43.646126 [debug]: Finished parsing models\gold\fs\reports\products\gv_fs_products_report.sql [  0.00s]
+03:13:43.665550 [debug]: Finished parsing models\silver\fs\st_fs_orders.sql [  0.02s]
+03:13:43.688125 [debug]: Finished parsing analyses\test_customers.sql [  0.00s]
+03:13:43.690856 [debug]: Finished parsing target\generic_tests\source_test_string_not_empty_landing_cust_Zip.sql [  0.00s]
+03:13:43.691012 [debug]: Finished parsing target\generic_tests\source_not_null_landing_prod_UnitPrice.sql [  0.00s]
+03:13:43.691056 [debug]: Finished parsing target\generic_tests\source_not_null_landing_orders_Quantity.sql [  0.00s]
+03:13:43.691103 [debug]: Finished parsing target\generic_tests\source_test_string_not_empty_landing_cust_Country.sql [  0.00s]
+03:13:43.691131 [debug]: Finished parsing target\generic_tests\source_not_null_landing_cont_Country.sql [  0.00s]
+03:13:43.691151 [debug]: Finished parsing target\generic_tests\source_not_null_landing_prod_Color.sql [  0.00s]
+03:13:43.691181 [debug]: Finished parsing target\generic_tests\source_unique_landing_cust_Email.sql [  0.00s]
+03:13:43.691204 [debug]: Finished parsing target\generic_tests\source_not_null_landing_supp_ValidFrom.sql [  0.00s]
+03:13:43.693284 [debug]: Finished parsing target\generic_tests\source_test_positive_values_landing_prod_UnitPrice.sql [  0.00s]
+03:13:43.693425 [debug]: Finished parsing target\generic_tests\source_test_positive_values_landing_orders_Quantity.sql [  0.00s]
+03:13:43.693522 [debug]: Finished parsing target\generic_tests\source_not_null_stage_cust_CustomerID.sql [  0.00s]
+03:13:43.693490 [debug]: Finished parsing target\generic_tests\source_not_null_landing_cust_FaxNumber.sql [  0.00s]
+03:13:43.693713 [debug]: Finished parsing target\generic_tests\source_test_string_not_empty_landing_prod_Color.sql [  0.00s]
+03:13:43.693739 [debug]: Finished parsing target\generic_tests\source_test_string_not_empty_landing_cont_Country.sql [  0.00s]
+03:13:43.694387 [debug]: Finished parsing target\generic_tests\source_not_null_landing_cust_CustomerFirstName.sql [  0.00s]
+03:13:43.695493 [debug]: Finished parsing target\generic_tests\source_test_string_not_empty_landing_cust_FaxNumber.sql [  0.00s]
+03:13:43.696895 [debug]: Finished parsing target\generic_tests\source_unique_landing_cont_Country.sql [  0.00s]
+03:13:43.697383 [debug]: Finished parsing target\generic_tests\source_test_string_not_empty_landing_cust_CustomerFirstName.sql [  0.00s]
+03:13:43.697445 [debug]: Finished parsing target\generic_tests\source_not_null_landing_prod_ProductID.sql [  0.00s]
+03:13:43.697642 [debug]: Finished parsing target\generic_tests\source_not_null_landing_orders_SupplierId.sql [  0.00s]
+03:13:43.698663 [debug]: Finished parsing target\generic_tests\source_not_null_landing_prod_ValidFrom.sql [  0.01s]
+03:13:43.698726 [debug]: Finished parsing target\generic_tests\source_not_null_landing_orders_CustomerID.sql [  0.01s]
+03:13:43.698881 [debug]: Finished parsing target\generic_tests\source_unique_stage_cust_CustomerID.sql [  0.01s]
+03:13:43.700134 [debug]: Finished parsing target\generic_tests\source_not_null_landing_cust_PhoneNumber.sql [  0.00s]
+03:13:43.700251 [debug]: Finished parsing target\generic_tests\source_not_null_landing_orders_LastEditedBy.sql [  0.01s]
+03:13:43.700291 [debug]: Finished parsing target\generic_tests\source_unique_landing_prod_ProductID.sql [  0.00s]
+03:13:43.700305 [debug]: Finished parsing target\generic_tests\source_not_null_landing_cont_updated_at.sql [  0.00s]
+03:13:43.700357 [debug]: Finished parsing target\generic_tests\source_not_null_landing_supp_PhoneNumber.sql [  0.00s]
+03:13:43.700364 [debug]: Finished parsing target\generic_tests\source_not_null_landing_cust_CustomerID.sql [  0.00s]
+03:13:43.700766 [debug]: Finished parsing target\generic_tests\source_not_null_landing_orders_TaxRate.sql [  0.01s]
+03:13:43.702513 [debug]: Finished parsing target\generic_tests\source_test_string_not_empty_landing_supp_PhoneNumber.sql [  0.00s]
+03:13:43.702699 [debug]: Finished parsing target\generic_tests\not_null_gt_fs_customers_dbt_current_flag.sql [  0.01s]
+03:13:43.702729 [debug]: Finished parsing target\generic_tests\source_test_positive_values_landing_orders_TaxRate.sql [  0.00s]
+03:13:43.702847 [debug]: Finished parsing target\generic_tests\source_not_null_landing_prod_ProductName.sql [  0.00s]
+03:13:43.703037 [debug]: Finished parsing target\generic_tests\source_unique_landing_cust_CustomerID.sql [  0.00s]
+03:13:43.703240 [debug]: Finished parsing target\generic_tests\source_not_null_landing_cust_Address.sql [  0.00s]
+03:13:43.703533 [debug]: Finished parsing target\generic_tests\source_test_string_not_empty_landing_cust_PhoneNumber.sql [  0.00s]
+03:13:43.705267 [debug]: Finished parsing target\generic_tests\source_not_null_landing_orders_LastEditedDate.sql [  0.01s]
+03:13:43.705360 [debug]: Finished parsing target\generic_tests\source_test_string_not_empty_landing_prod_ProductName.sql [  0.00s]
+03:13:43.705381 [debug]: Finished parsing target\generic_tests\source_not_null_landing_supp_SupplierId.sql [  0.00s]
+03:13:43.705409 [debug]: Finished parsing target\generic_tests\source_not_null_landing_cust_State.sql [  0.00s]
+03:13:43.705697 [debug]: Finished parsing target\generic_tests\not_null_gt_fs_customers_dbt_id_business_key.sql [  0.00s]
+03:13:43.705726 [debug]: Finished parsing target\generic_tests\source_not_null_landing_orders_UnitPrice.sql [  0.00s]
+03:13:43.706296 [debug]: Finished parsing target\generic_tests\source_test_string_not_empty_landing_cust_Address.sql [  0.00s]
+03:13:43.706519 [debug]: Finished parsing target\generic_tests\source_not_null_landing_cust_CustomerLastName.sql [  0.00s]
+03:13:43.707005 [debug]: Finished parsing target\generic_tests\source_unique_landing_supp_SupplierId.sql [  0.00s]
+03:13:43.707203 [debug]: Finished parsing target\generic_tests\source_not_null_landing_prod_SupplierId.sql [  0.00s]
+03:13:43.707231 [debug]: Finished parsing target\generic_tests\source_test_string_not_empty_landing_cust_State.sql [  0.00s]
+03:13:43.707300 [debug]: Finished parsing target\generic_tests\unique_gt_fs_customers_dbt_id_business_key.sql [  0.00s]
+03:13:43.709339 [debug]: Finished parsing target\generic_tests\source_not_null_landing_cust_ValidFrom.sql [  0.00s]
+03:13:43.709399 [debug]: Finished parsing target\generic_tests\source_not_null_landing_orders_LastEditedWhen.sql [  0.01s]
+03:13:43.709436 [debug]: Finished parsing target\generic_tests\source_not_null_landing_cust_City.sql [  0.00s]
+03:13:43.709471 [debug]: Finished parsing target\generic_tests\source_not_null_landing_prod_TaxRate.sql [  0.00s]
+03:13:43.709485 [debug]: Finished parsing target\generic_tests\not_null_gt_fs_customers_sk_fs_customer.sql [  0.00s]
+03:13:43.709496 [debug]: Finished parsing target\generic_tests\source_not_null_landing_supp_SupplierName.sql [  0.00s]
+03:13:43.709868 [debug]: Finished parsing target\generic_tests\source_test_string_not_empty_landing_cust_CustomerLastName.sql [  0.00s]
+03:13:43.711481 [debug]: Finished parsing target\generic_tests\source_test_positive_values_landing_prod_TaxRate.sql [  0.00s]
+03:13:43.711551 [debug]: Finished parsing target\generic_tests\source_test_string_not_empty_landing_supp_SupplierName.sql [  0.00s]
+03:13:43.711583 [debug]: Finished parsing target\generic_tests\source_test_positive_values_landing_orders_UnitPrice.sql [  0.01s]
+03:13:43.711611 [debug]: Finished parsing target\generic_tests\source_test_no_future_dates_landing_orders_LastEditedWhen.sql [  0.00s]
+03:13:43.711643 [debug]: Finished parsing target\generic_tests\unique_gt_fs_customers_sk_fs_customer.sql [  0.00s]
+03:13:43.711673 [debug]: Finished parsing target\generic_tests\source_not_null_landing_cust_Zip.sql [  0.00s]
+03:13:43.712066 [debug]: Finished parsing target\generic_tests\source_not_null_landing_prod_Brand.sql [  0.01s]
+03:13:43.712603 [debug]: Finished parsing target\generic_tests\source_test_string_not_empty_landing_cust_City.sql [  0.00s]
+03:13:43.712661 [debug]: Finished parsing target\generic_tests\source_not_null_landing_cust_Email.sql [  0.00s]
+03:13:43.714021 [debug]: Finished parsing target\generic_tests\source_test_string_not_empty_landing_prod_Brand.sql [  0.00s]
+03:13:43.714093 [debug]: Finished parsing target\generic_tests\source_test_string_not_empty_landing_cust_Email.sql [  0.00s]
+03:13:43.714101 [debug]: Finished parsing target\generic_tests\source_not_null_landing_orders_OrderID.sql [  0.00s]
+03:13:43.714187 [debug]: Finished parsing target\generic_tests\source_not_null_landing_cust_Country.sql [  0.00s]
+03:13:43.715771 [debug]: Finished parsing target\generic_tests\source_unique_landing_orders_OrderID.sql [  0.00s]
+03:13:43.717543 [debug]: Finished parsing target\generic_tests\source_not_null_landing_orders_ProductID.sql [  0.00s]
+03:13:43.776672 [info ]: Finished parsing [  0.65s]
+03:13:43.778055 [info ]: Cached model count updated: 8 models (estimate)
+03:13:43.778085 [info ]: Cached model count updated: 8 models (accurate)
+03:13:43.778487 [info ]: Started scheduling
+03:13:43.779632 [info ]: Finished scheduling [  0.00s]
+03:13:43.779751 [debug]: Compilation - 13 nodes selected: {"analysis.fabric_warehouse.test_customers", "model.fabric_warehouse.gt_fs_continents", "model.fabric_warehouse.gt_fs_customers", "model.fabric_warehouse.gt_fs_dates", "model.fabric_warehouse.gt_fs_orders", "model.fabric_warehouse.gt_fs_products", "model.fabric_warehouse.gt_fs_suppliers", "model.fabric_warehouse.gv_fs_products_report", "model.fabric_warehouse.st_fs_orders", "snapshot.fabric_warehouse.st_fs_continents", "snapshot.fabric_warehouse.st_fs_customers", "snapshot.fabric_warehouse.st_fs_products", "snapshot.fabric_warehouse.st_fs_suppliers"}
+03:13:43.779854 [info ]: Started scheduling
+03:13:43.780479 [info ]: Finished scheduling [  0.00s]
+03:13:43.780840 [debug]: Initializing schema store with entry: Selected("snapshot.fabric_warehouse.st_fs_continents") and interval: None
+03:13:43.780969 [debug]: Initializing schema store with entry: Selected("snapshot.fabric_warehouse.st_fs_customers") and interval: None
+03:13:43.781011 [debug]: Initializing schema store with entry: Selected("snapshot.fabric_warehouse.st_fs_suppliers") and interval: None
+03:13:43.781047 [debug]: Initializing schema store with entry: Selected("snapshot.fabric_warehouse.st_fs_products") and interval: None
+03:13:43.781126 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "bt_fs_customers", schema: "dbo", table: "bt_fs_customers" }) and interval: None
+03:13:43.781207 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "bt_fs_orders", schema: "dbo", table: "bt_fs_orders" }) and interval: None
+03:13:43.781274 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "bt_fs_products", schema: "dbo", table: "bt_fs_products" }) and interval: None
+03:13:43.781324 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "bt_fs_continents", schema: "dbo", table: "bt_fs_continents" }) and interval: None
+03:13:43.781399 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "bt_fs_suppliers", schema: "dbo", table: "bt_fs_suppliers" }) and interval: None
+03:13:43.784427 [debug]:    Started downloading relations (2 items)
+03:13:43.785051 [debug]:   Finished [  0.00s] downloading relations (2 items)
