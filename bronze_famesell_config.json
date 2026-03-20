@@ -1,0 +1,65 @@
+{
+  "sourceSystem": "FameSell",
+  "tables": [
+    {
+      "schema": "dbo",
+      "tableName": "Customers",
+      "parquetName": "customers",
+      "deltaSchema": "famesell",
+      "deltaName": "bt_fs_customers",
+      "deltaNotebook": "bt_fs_customers",
+      "source_updated_at": "ValidFrom",
+      "source_businesskey": "CustomerID",
+      "is_enabled": true,
+      "ingestion_method": "fullload"
+    },
+    {
+      "schema": "dbo",
+      "tableName": "Orders",
+      "parquetName": "orders",
+      "deltaSchema": "famesell",
+      "deltaName": "bt_fs_orders",
+      "deltaNotebook": "bt_fs_orders",
+      "source_updated_at": "LastEditedWhen",
+      "source_businesskey": "OrderID",
+      "is_enabled": true,
+      "ingestion_method": "fullload"
+    },
+	{
+      "schema": "dbo",
+      "tableName": "Supplier",
+      "parquetName": "suppliers",
+      "deltaSchema": "famesell",
+      "deltaName": "bt_fs_suppliers",
+      "deltaNotebook": "bt_fs_suppliers",
+      "source_updated_at": "ValidFrom",
+      "source_businesskey": "SupplierId",
+      "is_enabled": true,
+      "ingestion_method": "fullload"
+    },
+	{
+      "schema": "dbo",
+      "tableName": "Product",
+      "parquetName": "products",
+      "deltaSchema": "famesell",
+      "deltaName": "bt_fs_products",
+      "deltaNotebook": "bt_fs_products",
+      "source_updated_at": "ValidFrom",
+      "source_businesskey": "ProductID",
+      "is_enabled": true,
+      "ingestion_method": "fullload"
+    },
+	{
+      "schema": "dbo",
+      "tableName": "Continents",
+      "parquetName": "continents",
+      "deltaSchema": "famesell",
+      "deltaName": "bt_fs_continents",
+      "deltaNotebook": "bt_fs_continents",
+      "source_updated_at": "updated_at",
+      "source_businesskey": "Country",
+      "is_enabled": true,
+      "ingestion_method": "fullload"
+    }
+  ]
+}

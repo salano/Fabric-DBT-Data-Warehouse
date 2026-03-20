@@ -1,0 +1,1 @@
+{{ test_unique(column_name="dbt_id_business_key", model=get_where_subquery(ref('gt_fs_customers'))) }}

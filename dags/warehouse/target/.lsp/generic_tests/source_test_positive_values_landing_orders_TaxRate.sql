@@ -1,0 +1,1 @@
+{{ test_test_positive_values(column_name="TaxRate", model=get_where_subquery(source('landing', 'orders'))) }}

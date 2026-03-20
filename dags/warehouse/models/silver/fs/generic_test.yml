@@ -1,0 +1,17 @@
+#Generic test config file for DBT custom and generic tests
+# models:
+#   - name: st_fs_customers
+#     columns:
+#       - name: Email
+#         tests:
+#           - string_not_empty
+#           - unique
+#           - not_null
+
+#   - name: st_fs_orders
+#     columns:
+#       - name: CustomerID
+#         tests:
+#           - relationships:
+#             to: ref('st_fs_customers')
+#             field: CustomerID

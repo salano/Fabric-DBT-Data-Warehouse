@@ -1,0 +1,1 @@
+{{ test_unique(column_name="SupplierId", model=get_where_subquery(source('landing', 'supp'))) }}

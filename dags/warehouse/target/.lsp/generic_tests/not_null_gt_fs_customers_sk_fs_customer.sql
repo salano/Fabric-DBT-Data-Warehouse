@@ -1,0 +1,1 @@
+{{ test_not_null(column_name="sk_fs_customer", model=get_where_subquery(ref('gt_fs_customers'))) }}

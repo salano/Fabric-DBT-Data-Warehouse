@@ -1,0 +1,1 @@
+{{ test_test_string_not_empty(column_name="Email", model=get_where_subquery(source('landing', 'cust'))) }}

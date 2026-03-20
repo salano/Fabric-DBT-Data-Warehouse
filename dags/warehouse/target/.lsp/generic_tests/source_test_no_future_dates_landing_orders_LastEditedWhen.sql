@@ -1,0 +1,1 @@
+{{ test_test_no_future_dates(column_name="LastEditedWhen", model=get_where_subquery(source('landing', 'orders'))) }}

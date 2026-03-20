@@ -1,0 +1,16 @@
+#Install DBT for Fabric
+
+python -m pip install --pre dbt-core dbt-fabric
+
+dbt --version
+
+#Create and initialize Project
+dbt init warehouse
+
+#Config connections in DBT profile.yml file in user .dbt folder
+
+#Change to project directory
+cd warehouse
+
+#Test connection
+dbt debug

@@ -1,0 +1,26 @@
+models:
+  - name: gt_fs_customers
+    description: This is the cleaned customers data set for consumption by reports and analyst
+    columns:
+      - name: sk_fs_customer
+        description: Surrogate key for customer's data
+        tests:
+          - not_null
+          - unique
+      - name: dbt_id_sourcesystem
+        description: Source system name
+      - name: dbt_id_business_key
+        description: Business key of customer data
+        tests:
+          - not_null
+          - unique
+      - name: dbt_current_flag
+        description: Record active status 0 inactive, 1 active
+        tests:
+          - not_null
+      - name: dbt_valid_from
+        description: Start active date of record
+      - name: dbt_valid_to
+        description: Date record expires
+      - name: dbt_updated_at
+        description: Date record was last updated

@@ -1,0 +1,1 @@
+{{ test_test_string_not_empty(column_name="CustomerFirstName", model=get_where_subquery(source('landing', 'cust'))) }}

@@ -1,0 +1,212 @@
+#Apply source validation tests
+sources:
+  - name: landing
+    description: The Fabric lakehouse for landing files and tables
+    database: bronze
+    schema: dbo
+    #Testing for data freshness - Global/Set at table level for more granularity
+    freshness:
+      warn_after: { count: 1, period: day }
+      error_after: { count: 3, period: day }
+    loaded_at_field: ValidFrom
+    tables:
+      - name: cust
+        description: The customers table in the landing lakehouse
+        identifier: bt_fs_customers
+        columns:
+          - name: CustomerID
+            tests:
+              - not_null
+              - unique
+              #- dbt_expectations.expect_column_to_exist
+          - name: CustomerLastName
+            tests:
+              - not_null
+              - test_string_not_empty
+          - name: CustomerFirstName
+            tests:
+              - not_null
+              - test_string_not_empty
+          - name: PhoneNumber
+            tests:
+              - not_null
+              - test_string_not_empty
+          - name: FaxNumber
+            tests:
+              - not_null
+              - test_string_not_empty
+          - name: Email
+            tests:
+              - not_null
+              - test_string_not_empty
+              - unique
+          - name: Address
+            tests:
+              - not_null
+              - test_string_not_empty
+          - name: City
+            tests:
+              - not_null
+              - test_string_not_empty
+          - name: State
+            tests:
+              - not_null
+              - test_string_not_empty
+          - name: Zip
+            tests:
+              - not_null
+              - test_string_not_empty
+          - name: Country
+            tests:
+              - not_null
+              - test_string_not_empty
+          - name: ValidFrom
+            tests:
+              - not_null
+              #- dbt_utils.expression_is_true:
+              #  arguments:
+              #    expression: "date_parse(ValidFrom, '%Y-%m-%d %H:%i:%s') is not null"
+
+      - name: cont
+        description: The continent table in the landing lakehouse
+        identifier: bt_fs_continents
+        columns:
+          - name: Country
+            tests:
+              - not_null
+              - test_string_not_empty
+              - unique
+          - name: updated_at
+            # Overrides the default for just this table
+            loaded_at_field: updated_at
+            freshness:
+              warn_after: { count: 1, period: day }
+              error_after: { count: 1, period: day }
+            tests:
+              - not_null
+              #- dbt_utils.expression_is_true:
+              #  arguments:
+              #    expression: "date_parse(ValidFrom, '%Y-%m-%d %H:%i:%s') is not null"
+
+      - name: prod
+        description: The products table in the landing lakehouse
+        identifier: bt_fs_products
+        columns:
+          - name: ProductID
+            tests:
+              - not_null
+              - unique
+          - name: ProductName
+            tests:
+              - not_null
+              - test_string_not_empty
+          - name: Color
+            tests:
+              - not_null
+              - test_string_not_empty
+          - name: Brand
+            tests:
+              - not_null
+              - test_string_not_empty
+          - name: TaxRate
+            tests:
+              - not_null
+              - test_positive_values
+          - name: UnitPrice
+            tests:
+              - not_null
+              - test_positive_values
+          - name: SupplierId
+            tests:
+              - not_null
+          - name: ValidFrom
+            tests:
+              - not_null
+              #- dbt_utils.expression_is_true:
+              #  arguments:
+              #    expression: "date_parse(ValidFrom, '%Y-%m-%d %H:%i:%s') is not null"
+
+      - name: supp
+        description: The suppliers table in the landing lakehouse
+        identifier: bt_fs_suppliers
+        columns:
+          - name: SupplierId
+            tests:
+              - not_null
+              - unique
+          - name: SupplierName
+            tests:
+              - not_null
+              - test_string_not_empty
+          - name: PhoneNumber
+            tests:
+              - not_null
+              - test_string_not_empty
+
+          - name: ValidFrom
+            tests:
+              - not_null
+              #- dbt_utils.expression_is_true:
+              #  arguments:
+              #    expression: "date_parse(ValidFrom, '%Y-%m-%d %H:%i:%s') is not null"
+
+      - name: orders
+        description: The orders table in the landing lakehouse
+        identifier: bt_fs_orders
+        columns:
+          - name: OrderID
+            tests:
+              - not_null
+              - unique
+          - name: ProductID
+            tests:
+              - not_null
+          - name: SupplierId
+            tests:
+              - not_null
+          - name: CustomerID
+            tests:
+              - not_null
+          - name: Quantity
+            tests:
+              - not_null
+              - test_positive_values
+          - name: UnitPrice
+            tests:
+              - not_null
+              - test_positive_values
+          - name: TaxRate
+            tests:
+              - not_null
+              - test_positive_values
+          - name: LastEditedBy
+            tests:
+              - not_null
+          - name: LastEditedWhen
+            tests:
+              - not_null
+              - test_no_future_dates
+              #- dbt_utils.expression_is_true:
+              #  arguments:
+              #    expression: "date_parse(ValidFrom, '%Y-%m-%d %H:%i:%s') is not null"
+          - name: LastEditedDate
+            tests:
+              - not_null
+              #- dbt_utils.expression_is_true:
+              #  arguments:
+              #    expression: "date_parse(ValidFrom, '%Y-%m-%d') is not null"
+
+  - name: stage
+    description: The Fabric warehouse for silver and  gold tables and views
+    database: DWH
+    schema: silver
+    tables:
+      - name: cust
+        description: The customers table in the landing lakehouse
+        identifier: st_fs_customers
+        columns:
+          - name: CustomerID
+            tests:
+              - not_null
+              - unique
+              #- dbt_expectations.expect_column_to_exist

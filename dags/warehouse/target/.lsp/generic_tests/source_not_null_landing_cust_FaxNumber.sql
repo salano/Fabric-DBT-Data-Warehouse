@@ -1,0 +1,1 @@
+{{ test_not_null(column_name="FaxNumber", model=get_where_subquery(source('landing', 'cust'))) }}

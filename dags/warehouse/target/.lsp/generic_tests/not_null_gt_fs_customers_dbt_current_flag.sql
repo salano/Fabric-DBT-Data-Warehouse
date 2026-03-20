@@ -1,0 +1,1 @@
+{{ test_not_null(column_name="dbt_current_flag", model=get_where_subquery(ref('gt_fs_customers'))) }}

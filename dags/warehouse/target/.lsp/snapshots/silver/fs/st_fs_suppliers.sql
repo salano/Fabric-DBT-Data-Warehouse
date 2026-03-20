@@ -1,0 +1,1 @@
+{{ snapshot_st_fs_suppliers() }}
