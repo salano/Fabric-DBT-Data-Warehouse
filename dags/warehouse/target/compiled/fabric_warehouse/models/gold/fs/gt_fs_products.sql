@@ -36,6 +36,12 @@ WITH snapshot_table AS (
 	FROM "DWH"."silver"."st_fs_products" driving
     WHERE 1=1
     
+        AND driving.dbt_updated_at > (
+        SELECT MAX(dbt_updated_at)
+        FROM "DWH"."gold"."gt_fs_products"
+        WHERE dbt_id_business_key != -1
+        )
+    
 
     UNION ALL
 

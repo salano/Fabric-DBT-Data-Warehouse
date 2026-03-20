@@ -49,3 +49,5 @@ WITH silver_table AS (
   FROM 
     silver_table
 
+
+    where LastEditedWhen > (select coalesce(max(LastEditedWhen),'1900-01-01 00:00:00') from "DWH"."gold"."gt_fs_orders")

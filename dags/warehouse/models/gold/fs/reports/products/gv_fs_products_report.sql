@@ -22,7 +22,9 @@ WITH
         FROM gold.gt_fs_orders as o
             LEFT JOIN gold.gt_fs_products p ON o.sk_fs_product = p.sk_fs_product
         WHERE
-            o.sk_fs_product IS NOT NULL -- only consider valid order dates
+            1 = 1
+            and dbt_current_flag = 1
+            and o.sk_fs_product IS NOT NULL -- only consider valid order dates
     ),
     product_aggregations AS (
         /*---------------------------------------------------------------------------

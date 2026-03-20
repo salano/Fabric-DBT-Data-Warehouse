@@ -38,35 +38,15 @@ WITH snapshot_table AS (
 	FROM "DWH"."silver"."st_fs_customers" driving
 
     
-
+        -- Only pull new records since the last run
+        WHERE dbt_updated_at > (
+        SELECT MAX(dbt_updated_at)
+        FROM "DWH"."gold"."gt_fs_customers"
+        WHERE dbt_id_business_key != -1
+        )
     
-        --Add only dummy record
-    Union ALL
-    
-	SELECT 
-        -- dummy record for artifical foreign keys
-        -1  AS sk_fs_customer,
-        -1  AS sk_fs_customer_master,
-        'N/A'  AS dbt_id_sourcesystem,
-        -1  AS dbt_id_business_key,
-        1  AS dbt_current_flag,
-        CAST('1900-01-01' AS DATE) AS dbt_valid_from,
-        CAST('3000-12-31' AS DATE) AS dbt_valid_to,
-        CAST('1900-01-01' AS DATE) AS mod_valid_from,
-        CAST('3000-12-31' AS DATE) AS mod_valid_to,
-		CAST('1900-01-01' AS DATE) AS dbt_updated_at,
-        'N/A' AS CustomerFirstName,
-        'N/A' AS CustomerLastName,
-        'N/A' AS PhoneNumber,
-        'N/A' AS FaxNumber,
-        'N/A' AS Email,
-        'N/A' AS Address,
-        'N/A' AS City,
-        'N/A' AS State,
-        'N/A' AS Zip,
-        'N/A' AS Country
 
-         
+       
 )
     select
         sk_fs_customer,
