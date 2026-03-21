@@ -322,3 +322,9 @@ Finished 'unknown' with 13 errors [26h 38m 51s]
 03:13:43.781399 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "bt_fs_suppliers", schema: "dbo", table: "bt_fs_suppliers" }) and interval: None
 03:13:43.784427 [debug]:    Started downloading relations (2 items)
 03:13:43.785051 [debug]:   Finished [  0.00s] downloading relations (2 items)
+05:06:45.407639 [info ]: Loading ~/.dbt/profiles.yml
+05:16:28.541875 [info ]: Loading profiles.yml
+06:24:15.570770 [info ]: suggestion: Run 'dbt deps' to see the latest fusion compatible packages. For compatibility errors, try the autofix script: https://github.com/dbt-labs/dbt-autofix
+06:24:15.570770 [info ]: 
+==================== Execution Summary =====================
+Finished 'unknown' with 13 errors [3h 10m 33s]

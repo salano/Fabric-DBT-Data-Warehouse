@@ -4,16 +4,15 @@ fabric_warehouse:
     prod:
       type: fabric
       driver: "ODBC Driver 18 for SQL Server"
-      server: "{ { env_var('DBT-FABRIC-SERVER') } }"
+      server: "{ { env_var('NEW-DBT-FABRIC-SERVER') } }"
       port: 1433
       database: "DWH"
       method: spark
       schema: silver
       authentication: ServicePrincipal
-      tenant_id: "{ { env_var('DBT-FABRIC-TENANT_ID') } }"
-      client_id: "{ { env_var('DBT-FABRIC-CLIENT_ID') } }"
-      client_secret: "{ { env_var('DBT-FABRIC-CLIENT-SECRET') } }"
+      tenant_id: "{ { env_var('NEW-DBT-FABRIC-TENANT-ID') } }"
+      client_id: "{ { env_var('NEW-DBT-FABRIC-CLIENT-ID') } }"
+      client_secret: "{ { env_var('NEW-DBT-FABRIC-CLIENT-SECRET') } }"
       threads: 4
       timeout: 300
       retries: 1
-
