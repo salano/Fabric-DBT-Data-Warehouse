@@ -1,12 +1,12 @@
-In this section we build a Data Warehouse on Microsoft Fabric. We build the Slowly Changing Dimension Type 2 with DBT. We will be following the medallion architecture for the project.\
+In this section we build a Data Warehouse on Microsoft Fabric. We build the Slowly Changing Dimension Type 2 with DBT. We will be following the medallion architecture for the project.<br/>
 
 **Bronze Layer**
 
-The key element of the build are below.\
+The key element of the build are below.<br/>
 
 1. We bulk import the tables from tables in SQL server as parquet files into a Microsoft Fabric Lakehouse name bronze.\
 
-We create a JSON config file which defines all the tables we will be importing. This file will act as central control to add and remove table to the bulk import and will be stored in the files section of the lakehouse. The JSON structure is\
+We create a JSON config file which defines all the tables we will be importing. This file will act as central control to add and remove table to the bulk import and will be stored in the files section of the lakehouse. The JSON structure is:<br/>
 
 ```
 {
@@ -234,7 +234,7 @@ sources:
 
 8. Create a snapshot to perform the SCD type 2 for the table in the silver layer. Key components:\
 
-- Add end data for all records deleted at source.\
+- Add end data for all records deleted at source.<br/>
 - deduplicate records
 - data cleansing and formatting
 
@@ -335,8 +335,8 @@ WITH ranked_source AS (
 
 **Gold layer**
 
-1. We install the DBT util package (dbt-labs/dbt_utils).\
-2. We create a macro to use as a post hook to update statistics after a table load.\
+1. We install the DBT util package (dbt-labs/dbt_utils).<br/>
+2. We create a macro to use as a post hook to update statistics after a table load.<br/>
 
 ```
 #-- Pass the table name, statistics name, and column name on which to create the statistic --#}
@@ -377,7 +377,7 @@ WITH ranked_source AS (
 
 ```
 
-4. We create an incremental model in the models folder of the project. Key highlights are:\
+4. We create an incremental model in the models folder of the project. Key highlights are:<br/>
 
 - Add the post hook to the config section to create or update the table statistics.
 - Create surrogate key for the table - use a hash of the business key, source system and valid from columns for uniqueness.
@@ -494,7 +494,7 @@ Output of gold layer table
 
 - ![ALT ](gold_output.png)
 
-We can create a dates table in model (ideally should be a one off process and not created on every run)\
+We can create a dates table in model (ideally should be a one off process and not created on every run)<br/>
 
 - Uses date macro helper
 
