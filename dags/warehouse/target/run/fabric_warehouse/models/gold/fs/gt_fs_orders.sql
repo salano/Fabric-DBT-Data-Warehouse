@@ -1,29 +1,77 @@
--- back compat for old kwarg name
+
   
-  
-  
+    
+    
+    USE [DWH];
+    
+    
+
+    EXEC('create view "gold"."gt_fs_orders__dbt_tmp_vw" as 
+
+
+WITH silver_table AS ( 
+
+    SELECT
+        coalesce(cust.sk_fs_customer, -1) sk_fs_customer,
+        coalesce(prod.sk_fs_product, -1) sk_fs_product,
+        coalesce(supp.sk_fs_supplier, -1) sk_fs_supplier,
+        coalesce(cont.sk_fs_continent, -1) sk_fs_continent,
+        coalesce(dt.sk_fs_date, CAST(''1900-01-01'' AS DATE)) sk_fs_date,
+        orders.OrderID,
+        orders.ProductID,
+        orders.SupplierId,
+        orders.CustomerID,
+        orders.Quantity,
+        orders.UnitPrice,
+        orders.TaxRate,
+        round(cast(orders.Quantity as float) * orders.UnitPrice,2) AS total_revenue,
+        case when orders.TaxRate = 0 then 0
+                else round(cast(orders.Quantity as float) * orders.UnitPrice * cast((orders.TaxRate/100) as float),2)
+        end AS total_tax,
+        round(cast(orders.Quantity as float) * orders.UnitPrice,2) + case when orders.TaxRate = 0 then 0
+                else round(cast(orders.Quantity as float) * orders.UnitPrice * cast((orders.TaxRate/100) as float),2)
+        end as total_revenue_with_tax,
+        LastEditedBy,
+        LastEditedWhen,
+        LastEditedDate,
+        source_updated_at,
+        source_businesskey,
+        source_system,
+        ingestion_date,
+        ingestion_year,
+        ingestion_month,
+        ingestion_day
+    FROM
+    "DWH"."silver"."st_fs_orders" orders
+    left join "DWH"."gold"."gt_fs_customers" cust
+        on orders.CustomerID = cust.dbt_id_business_key
+    left join "DWH"."gold"."gt_fs_products" prod
+        on orders.ProductID = prod.dbt_id_business_key
+    left join "DWH"."gold"."gt_fs_continents" cont
+        on cust.Country = cont.dbt_id_business_key
+    left join "DWH"."silver"."gt_fs_suppliers" supp
+        on orders.SupplierId = supp.dbt_id_business_key
+    left join "DWH"."gold"."gt_fs_dates" dt
+        on orders.LastEditedDate = dt.sk_fs_date
+
+
+) SELECT 
+    *
+  FROM 
+    silver_table
+
+;');
+
+
+
+
+    
+    
+            EXEC('CREATE TABLE "DWH"."gold"."gt_fs_orders" AS SELECT * FROM "DWH"."gold"."gt_fs_orders__dbt_tmp_vw" 
+    OPTION (LABEL = ''dbt-fabric-dw'');
+');
         
-            
-	    
-	    
-            
-        
-    
 
     
 
-    merge into "DWH"."gold"."gt_fs_orders" as DBT_INTERNAL_DEST
-        using "DWH"."gold"."gt_fs_orders__dbt_tmp" as DBT_INTERNAL_SOURCE
-        on ((DBT_INTERNAL_SOURCE.OrderID = DBT_INTERNAL_DEST.OrderID))
-
-    
-    when matched then update set
-        "sk_fs_customer" = DBT_INTERNAL_SOURCE."sk_fs_customer","sk_fs_product" = DBT_INTERNAL_SOURCE."sk_fs_product","sk_fs_supplier" = DBT_INTERNAL_SOURCE."sk_fs_supplier","sk_fs_continent" = DBT_INTERNAL_SOURCE."sk_fs_continent","OrderID" = DBT_INTERNAL_SOURCE."OrderID","ProductID" = DBT_INTERNAL_SOURCE."ProductID","SupplierId" = DBT_INTERNAL_SOURCE."SupplierId","CustomerID" = DBT_INTERNAL_SOURCE."CustomerID","Quantity" = DBT_INTERNAL_SOURCE."Quantity","UnitPrice" = DBT_INTERNAL_SOURCE."UnitPrice","TaxRate" = DBT_INTERNAL_SOURCE."TaxRate","total_revenue" = DBT_INTERNAL_SOURCE."total_revenue","total_tax" = DBT_INTERNAL_SOURCE."total_tax","total_revenue_with_tax" = DBT_INTERNAL_SOURCE."total_revenue_with_tax","LastEditedBy" = DBT_INTERNAL_SOURCE."LastEditedBy","LastEditedWhen" = DBT_INTERNAL_SOURCE."LastEditedWhen","LastEditedDate" = DBT_INTERNAL_SOURCE."LastEditedDate","source_updated_at" = DBT_INTERNAL_SOURCE."source_updated_at","source_businesskey" = DBT_INTERNAL_SOURCE."source_businesskey","source_system" = DBT_INTERNAL_SOURCE."source_system","ingestion_date" = DBT_INTERNAL_SOURCE."ingestion_date","ingestion_year" = DBT_INTERNAL_SOURCE."ingestion_year","ingestion_month" = DBT_INTERNAL_SOURCE."ingestion_month","ingestion_day" = DBT_INTERNAL_SOURCE."ingestion_day"
-    
-
-    when not matched then insert
-        ("sk_fs_customer", "sk_fs_product", "sk_fs_supplier", "sk_fs_continent", "OrderID", "ProductID", "SupplierId", "CustomerID", "Quantity", "UnitPrice", "TaxRate", "total_revenue", "total_tax", "total_revenue_with_tax", "LastEditedBy", "LastEditedWhen", "LastEditedDate", "source_updated_at", "source_businesskey", "source_system", "ingestion_date", "ingestion_year", "ingestion_month", "ingestion_day")
-    values
-        ("sk_fs_customer", "sk_fs_product", "sk_fs_supplier", "sk_fs_continent", "OrderID", "ProductID", "SupplierId", "CustomerID", "Quantity", "UnitPrice", "TaxRate", "total_revenue", "total_tax", "total_revenue_with_tax", "LastEditedBy", "LastEditedWhen", "LastEditedDate", "source_updated_at", "source_businesskey", "source_system", "ingestion_date", "ingestion_year", "ingestion_month", "ingestion_day")
-
-;
+  

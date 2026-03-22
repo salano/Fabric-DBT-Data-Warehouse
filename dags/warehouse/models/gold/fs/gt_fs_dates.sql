@@ -14,7 +14,7 @@ WITH date_spine AS
 }}
 )
 SELECT
-   SK_Date        = dates
+   sk_fs_date        = dates
   ,[DateDesc]	= CONVERT(CHAR(11),dates,120)
   ,[WeekNbr]      = DATEPART(ISO_WEEK,dates)
   ,[MonthNbr]	= DATEPART(MONTH,dates)

@@ -494,7 +494,7 @@ Output of gold layer table
 
 - ![ALT ](gold_output.png)
 
-We can create a dates table in model (ideally should be a one off process and not created on every run)<br/>
+5. We can create a dates table in model (ideally should be a one off process and not created on every run)<br/>
 
 - Uses date macro helper
 
@@ -515,7 +515,7 @@ WITH date_spine AS
 }}
 )
 SELECT
-   SK_Date        = dates
+   sk_fs_date        = dates
   ,[DateDesc]	= CONVERT(CHAR(11),dates,120)
   ,[WeekNbr]      = DATEPART(ISO_WEEK,dates)
   ,[MonthNbr]	= DATEPART(MONTH,dates)
@@ -545,6 +545,80 @@ SELECT
   ,[DayOfQuarter]	 = DATEDIFF(DAY,DATEADD(QUARTER,DATEDIFF(QUARTER,0,dates),0),dates) + 1
   ,[DayOfYear]	 = DATEPART(DAYOFYEAR, dates)
 FROM date_spine d;
+```
+
+6. We create an incremental model in the models folder of the project for the orders fact table. Key highlights are:<br/>
+
+- Add the post hook to the config section to create or update the table statistics.
+- add surrogate key for the dimension tables - use a default/sentinel value for orders without a matching dimenion key.
+- Enrich data by creating calculated columns.
+
+```
+{{
+  config(
+    materialized='incremental',
+    unique_key='OrderID',
+    schema='gold',
+    post_hook="{{update_statistics(this,'OrderFactStatistics','OrderID')}}"
+  )
+}}
+
+
+WITH silver_table AS (
+
+    SELECT
+        coalesce(cust.sk_fs_customer, -1) sk_fs_customer,
+        coalesce(prod.sk_fs_product, -1) sk_fs_product,
+        coalesce(supp.sk_fs_supplier, -1) sk_fs_supplier,
+        coalesce(cont.sk_fs_continent, -1) sk_fs_continent,
+        coalesce(dt.sk_fs_date, CAST('1900-01-01' AS DATE)) sk_fs_date,
+        orders.OrderID,
+        orders.ProductID,
+        orders.SupplierId,
+        orders.CustomerID,
+        orders.Quantity,
+        orders.UnitPrice,
+        orders.TaxRate,
+        round(cast(orders.Quantity as float) * orders.UnitPrice,2) AS total_revenue,
+        case when orders.TaxRate = 0 then 0
+                else round(cast(orders.Quantity as float) * orders.UnitPrice * cast((orders.TaxRate/100) as float),2)
+        end AS total_tax,
+        round(cast(orders.Quantity as float) * orders.UnitPrice,2) + case when orders.TaxRate = 0 then 0
+                else round(cast(orders.Quantity as float) * orders.UnitPrice * cast((orders.TaxRate/100) as float),2)
+        end as total_revenue_with_tax,
+        LastEditedBy,
+        LastEditedWhen,
+        LastEditedDate,
+        source_updated_at,
+        source_businesskey,
+        source_system,
+        ingestion_date,
+        ingestion_year,
+        ingestion_month,
+        ingestion_day
+    FROM
+    {{ ref('st_fs_orders') }} orders
+    left join {{ ref('gt_fs_customers') }} cust
+        on orders.CustomerID = cust.dbt_id_business_key
+    left join {{ ref('gt_fs_products') }} prod
+        on orders.ProductID = prod.dbt_id_business_key
+    left join {{ ref('gt_fs_continents') }} cont
+        on cust.Country = cont.dbt_id_business_key
+    left join {{ ref('gt_fs_suppliers') }} supp
+        on orders.SupplierId = supp.dbt_id_business_key
+    left join {{ ref('gt_fs_dates') }} dt
+        on orders.LastEditedDate = dt.sk_fs_date
+
+
+) SELECT
+    *
+  FROM
+    silver_table
+
+{% if is_incremental() %}
+    where LastEditedWhen > (select coalesce(max(LastEditedWhen),'1900-01-01 00:00:00') from {{ this }})
+{% endif %}
+
 ```
 
 **Finally we can create a Semantic Model on the gold tables for reports**

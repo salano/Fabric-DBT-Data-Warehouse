@@ -15,6 +15,7 @@ WITH silver_table AS (
         coalesce(prod.sk_fs_product, -1) sk_fs_product,
         coalesce(supp.sk_fs_supplier, -1) sk_fs_supplier,
         coalesce(cont.sk_fs_continent, -1) sk_fs_continent,
+        coalesce(dt.sk_fs_date, CAST('1900-01-01' AS DATE)) sk_fs_date,
         orders.OrderID,
         orders.ProductID,
         orders.SupplierId,
@@ -49,6 +50,8 @@ WITH silver_table AS (
         on cust.Country = cont.dbt_id_business_key
     left join {{ ref('gt_fs_suppliers') }} supp
         on orders.SupplierId = supp.dbt_id_business_key
+    left join {{ ref('gt_fs_dates') }} dt
+        on orders.LastEditedDate = dt.sk_fs_date
 
 
 ) SELECT 

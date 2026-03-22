@@ -1,0 +1,1785 @@
+[0m04:40:56.385379 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000200732E4EC0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002007540FED0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002007540FC50>]}
+
+
+============================== 04:40:56.391857 | 242d22c1-c2a5-4e66-873b-115469b2bce5 ==============================
+[0m04:40:56.391857 [info ] [MainThread]: Running with dbt=1.11.7
+[0m04:40:56.392811 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'False', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\salano\\.dbt', 'indirect_selection': 'eager', 'use_colors': 'True', 'invocation_command': 'dbt run --select gt_fs_dates', 'use_experimental_parser': 'False', 'log_path': 'D:\\Python\\dbt_project\\dags\\warehouse\\logs'}
+[0m04:41:00.124360 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '242d22c1-c2a5-4e66-873b-115469b2bce5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002007377CE90>]}
+[0m04:41:00.221511 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '242d22c1-c2a5-4e66-873b-115469b2bce5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000020075BAD040>]}
+[0m04:41:00.223006 [info ] [MainThread]: Registered adapter: fabric=1.9.8
+[0m04:41:01.107909 [debug] [MainThread]: checksum: b80718358155fc17c3559352095564dd56ada1cc1a1c0ef2e62c857e71583775, vars: {}, profile: , target: , version: 1.11.7
+[0m04:41:03.659618 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 1 files changed.
+[0m04:41:03.660692 [debug] [MainThread]: Partial parsing: updated file: fabric_warehouse://models\gold\fs\gt_fs_dates.sql
+[0m04:41:04.115104 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '242d22c1-c2a5-4e66-873b-115469b2bce5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000020076058050>]}
+[0m04:41:04.319329 [debug] [MainThread]: Wrote artifact WritableManifest to D:\Python\dbt_project\dags\warehouse\target\manifest.json
+[0m04:41:04.341621 [debug] [MainThread]: Wrote artifact SemanticManifest to D:\Python\dbt_project\dags\warehouse\target\semantic_manifest.json
+[0m04:41:04.408880 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '242d22c1-c2a5-4e66-873b-115469b2bce5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000020075EC4E60>]}
+[0m04:41:04.409722 [info ] [MainThread]: Found 8 models, 4 snapshots, 1 analysis, 71 data tests, 6 sources, 768 macros
+[0m04:41:04.410663 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '242d22c1-c2a5-4e66-873b-115469b2bce5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000020076471710>]}
+[0m04:41:04.413829 [info ] [MainThread]: 
+[0m04:41:04.414627 [info ] [MainThread]: Concurrency: 4 threads (target='prod')
+[0m04:41:04.415385 [info ] [MainThread]: 
+[0m04:41:04.416514 [debug] [MainThread]: Acquiring new fabric connection 'master'
+[0m04:41:04.418391 [debug] [ThreadPool]: Acquiring new fabric connection 'list_DWH'
+[0m04:41:04.444747 [debug] [ThreadPool]: dbt-fabric
+[0m04:41:04.445364 [debug] [ThreadPool]: Using fabric connection "list_DWH"
+[0m04:41:04.445760 [debug] [ThreadPool]: On list_DWH: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "connection_name": "list_DWH"} */
+USE [DWH];
+    select  name as [schema]
+    from sys.schemas  
+    OPTION (LABEL = 'dbt-fabric-dw');
+
+  
+[0m04:41:04.446202 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m04:41:04.446643 [debug] [ThreadPool]: fabric adapter: Using connection string: DRIVER={ODBC Driver 18 for SQL Server};SERVER=kqs5jtdeedzebgwsqvvke4iowu-aezc4s5igg7udef7qepchtqude.datawarehouse.fabric.microsoft.com;Database=DWH;Pooling=true;SQL_ATTR_TRACE=SQL_OPT_TRACE_OFF;Authentication=ActiveDirectoryServicePrincipal;UID={6fbbf7e4-ec03-4db4-bdfe-74fce58c96bf};PWD=***;encrypt=Yes;TrustServerCertificate=No;APP=dbt-fabric/1.9.8;ConnectRetryCount=3;ConnectRetryInterval=10
+[0m04:41:08.687711 [debug] [ThreadPool]: fabric adapter: Connected to db: DWH
+[0m04:41:08.688460 [warn ] [ThreadPool]: fabric adapter: No workspace_id provided; skipping snapshot management.
+[0m04:41:08.748346 [debug] [ThreadPool]: SQL status: OK in 4.000 seconds
+[0m04:41:08.750497 [debug] [ThreadPool]: On list_DWH: Close
+[0m04:41:08.762624 [debug] [ThreadPool]: Acquiring new fabric connection 'list_DWH_gold'
+[0m04:41:08.772557 [debug] [ThreadPool]: Acquiring new fabric connection 'list_DWH_silver'
+[0m04:41:08.773554 [debug] [ThreadPool]: dbt-fabric
+[0m04:41:08.776883 [debug] [ThreadPool]: dbt-fabric
+[0m04:41:08.777634 [debug] [ThreadPool]: Using fabric connection "list_DWH_gold"
+[0m04:41:08.778274 [debug] [ThreadPool]: Using fabric connection "list_DWH_silver"
+[0m04:41:08.778807 [debug] [ThreadPool]: On list_DWH_gold: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "connection_name": "list_DWH_gold"} */
+USE [DWH];
+    with base as (
+      select
+        DB_NAME() as [database],
+        t.name as [name],
+        SCHEMA_NAME(t.schema_id) as [schema],
+        'table' as table_type
+      from sys.tables as t 
+      union all
+      select
+        DB_NAME() as [database],
+        v.name as [name],
+        SCHEMA_NAME(v.schema_id) as [schema],
+        'view' as table_type
+      from sys.views as v 
+    )
+    select * from base
+    where [schema] like 'gold'
+    
+    OPTION (LABEL = 'dbt-fabric-dw');
+
+  
+[0m04:41:08.779400 [debug] [ThreadPool]: On list_DWH_silver: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "connection_name": "list_DWH_silver"} */
+USE [DWH];
+    with base as (
+      select
+        DB_NAME() as [database],
+        t.name as [name],
+        SCHEMA_NAME(t.schema_id) as [schema],
+        'table' as table_type
+      from sys.tables as t 
+      union all
+      select
+        DB_NAME() as [database],
+        v.name as [name],
+        SCHEMA_NAME(v.schema_id) as [schema],
+        'view' as table_type
+      from sys.views as v 
+    )
+    select * from base
+    where [schema] like 'silver'
+    
+    OPTION (LABEL = 'dbt-fabric-dw');
+
+  
+[0m04:41:08.779966 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m04:41:08.780524 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m04:41:08.781132 [debug] [ThreadPool]: fabric adapter: Using connection string: DRIVER={ODBC Driver 18 for SQL Server};SERVER=kqs5jtdeedzebgwsqvvke4iowu-aezc4s5igg7udef7qepchtqude.datawarehouse.fabric.microsoft.com;Database=DWH;Pooling=true;SQL_ATTR_TRACE=SQL_OPT_TRACE_OFF;Authentication=ActiveDirectoryServicePrincipal;UID={6fbbf7e4-ec03-4db4-bdfe-74fce58c96bf};PWD=***;encrypt=Yes;TrustServerCertificate=No;APP=dbt-fabric/1.9.8;ConnectRetryCount=3;ConnectRetryInterval=10
+[0m04:41:08.781692 [debug] [ThreadPool]: fabric adapter: Using connection string: DRIVER={ODBC Driver 18 for SQL Server};SERVER=kqs5jtdeedzebgwsqvvke4iowu-aezc4s5igg7udef7qepchtqude.datawarehouse.fabric.microsoft.com;Database=DWH;Pooling=true;SQL_ATTR_TRACE=SQL_OPT_TRACE_OFF;Authentication=ActiveDirectoryServicePrincipal;UID={6fbbf7e4-ec03-4db4-bdfe-74fce58c96bf};PWD=***;encrypt=Yes;TrustServerCertificate=No;APP=dbt-fabric/1.9.8;ConnectRetryCount=3;ConnectRetryInterval=10
+[0m04:41:08.783297 [debug] [ThreadPool]: fabric adapter: Connected to db: DWH
+[0m04:41:09.180562 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m04:41:09.183519 [debug] [ThreadPool]: On list_DWH_gold: ROLLBACK
+[0m04:41:09.184779 [debug] [ThreadPool]: On list_DWH_gold: Close
+[0m04:41:09.881057 [debug] [ThreadPool]: fabric adapter: Connected to db: DWH
+[0m04:41:10.089242 [debug] [ThreadPool]: SQL status: OK in 1.000 seconds
+[0m04:41:10.091024 [debug] [ThreadPool]: On list_DWH_silver: ROLLBACK
+[0m04:41:10.091475 [debug] [ThreadPool]: On list_DWH_silver: Close
+[0m04:41:10.094052 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '242d22c1-c2a5-4e66-873b-115469b2bce5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000200766206D0>]}
+[0m04:41:10.094847 [debug] [MainThread]: On master: COMMIT
+[0m04:41:10.108232 [debug] [Thread-1 (]: Began running node model.fabric_warehouse.gt_fs_dates
+[0m04:41:10.108926 [info ] [Thread-1 (]: 1 of 1 START sql table model gold.gt_fs_dates .................................. [RUN]
+[0m04:41:10.110121 [debug] [Thread-1 (]: Acquiring new fabric connection 'model.fabric_warehouse.gt_fs_dates'
+[0m04:41:10.110590 [debug] [Thread-1 (]: Began compiling node model.fabric_warehouse.gt_fs_dates
+[0m04:41:10.119347 [debug] [Thread-1 (]: Writing injected SQL for node "model.fabric_warehouse.gt_fs_dates"
+[0m04:41:10.122035 [debug] [Thread-1 (]: Began executing node model.fabric_warehouse.gt_fs_dates
+[0m04:41:10.158718 [debug] [Thread-1 (]: Applying DROP to: "DWH"."gold"."gt_fs_dates__dbt_temp"
+[0m04:41:10.167923 [debug] [Thread-1 (]: Using fabric connection "model.fabric_warehouse.gt_fs_dates"
+[0m04:41:10.168390 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_dates: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "node_id": "model.fabric_warehouse.gt_fs_dates"} */
+
+      
+    USE [DWH];
+    EXEC('DROP table IF EXISTS "gold"."gt_fs_dates__dbt_temp";');
+
+[0m04:41:10.168849 [debug] [Thread-1 (]: Opening a new connection, currently in state init
+[0m04:41:10.169554 [debug] [Thread-1 (]: fabric adapter: Using connection string: DRIVER={ODBC Driver 18 for SQL Server};SERVER=kqs5jtdeedzebgwsqvvke4iowu-aezc4s5igg7udef7qepchtqude.datawarehouse.fabric.microsoft.com;Database=DWH;Pooling=true;SQL_ATTR_TRACE=SQL_OPT_TRACE_OFF;Authentication=ActiveDirectoryServicePrincipal;UID={6fbbf7e4-ec03-4db4-bdfe-74fce58c96bf};PWD=***;encrypt=Yes;TrustServerCertificate=No;APP=dbt-fabric/1.9.8;ConnectRetryCount=3;ConnectRetryInterval=10
+[0m04:41:10.170342 [debug] [Thread-1 (]: fabric adapter: Connected to db: DWH
+[0m04:41:10.230909 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m04:41:10.234851 [debug] [Thread-1 (]: Applying DROP to: "DWH"."gold"."gt_fs_dates__dbt_temp__dbt_tmp_vw"
+[0m04:41:10.235622 [debug] [Thread-1 (]: dbt-fabric
+[0m04:41:10.237823 [debug] [Thread-1 (]: Using fabric connection "model.fabric_warehouse.gt_fs_dates"
+[0m04:41:10.238366 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_dates: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "node_id": "model.fabric_warehouse.gt_fs_dates"} */
+
+        USE [DWH];
+        select
+            sch.name as schema_name,
+            obj.name as view_name
+        from sys.sql_expression_dependencies refs
+        inner join sys.objects obj
+        on refs.referencing_id = obj.object_id
+        inner join sys.schemas sch
+        on obj.schema_id = sch.schema_id
+        where refs.referenced_database_name = 'DWH'
+        and refs.referenced_schema_name = 'gold'
+        and refs.referenced_entity_name = 'gt_fs_dates__dbt_temp__dbt_tmp_vw'
+        and refs.referencing_class = 1
+        and obj.type = 'V'
+        
+    OPTION (LABEL = 'dbt-fabric-dw');
+
+      
+[0m04:41:10.324412 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m04:41:10.326274 [debug] [Thread-1 (]: Using fabric connection "model.fabric_warehouse.gt_fs_dates"
+[0m04:41:10.326729 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_dates: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "node_id": "model.fabric_warehouse.gt_fs_dates"} */
+
+      
+      
+    
+    USE [DWH];
+    EXEC('DROP view IF EXISTS "gold"."gt_fs_dates__dbt_temp__dbt_tmp_vw";');
+
+[0m04:41:10.376926 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m04:41:10.394738 [debug] [Thread-1 (]: dbt-fabric
+[0m04:41:10.397467 [debug] [Thread-1 (]: Applying DROP to: "DWH"."gold"."gt_fs_dates__dbt_temp__dbt_tmp_vw"
+[0m04:41:10.399294 [debug] [Thread-1 (]: dbt-fabric
+[0m04:41:10.399806 [debug] [Thread-1 (]: Using fabric connection "model.fabric_warehouse.gt_fs_dates"
+[0m04:41:10.400235 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_dates: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "node_id": "model.fabric_warehouse.gt_fs_dates"} */
+
+        USE [DWH];
+        select
+            sch.name as schema_name,
+            obj.name as view_name
+        from sys.sql_expression_dependencies refs
+        inner join sys.objects obj
+        on refs.referencing_id = obj.object_id
+        inner join sys.schemas sch
+        on obj.schema_id = sch.schema_id
+        where refs.referenced_database_name = 'DWH'
+        and refs.referenced_schema_name = 'gold'
+        and refs.referenced_entity_name = 'gt_fs_dates__dbt_temp__dbt_tmp_vw'
+        and refs.referencing_class = 1
+        and obj.type = 'V'
+        
+    OPTION (LABEL = 'dbt-fabric-dw');
+
+      
+[0m04:41:10.461427 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m04:41:10.463541 [debug] [Thread-1 (]: Using fabric connection "model.fabric_warehouse.gt_fs_dates"
+[0m04:41:10.464532 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_dates: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "node_id": "model.fabric_warehouse.gt_fs_dates"} */
+
+      
+      
+    
+    USE [DWH];
+    EXEC('DROP view IF EXISTS "gold"."gt_fs_dates__dbt_temp__dbt_tmp_vw";');
+
+[0m04:41:10.512163 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m04:41:10.523323 [debug] [Thread-1 (]: Writing runtime sql for node "model.fabric_warehouse.gt_fs_dates"
+[0m04:41:10.524514 [debug] [Thread-1 (]: Using fabric connection "model.fabric_warehouse.gt_fs_dates"
+[0m04:41:10.525142 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_dates: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "node_id": "model.fabric_warehouse.gt_fs_dates"} */
+
+  
+    
+    
+    USE [DWH];
+    
+    
+
+    EXEC('create view "gold"."gt_fs_dates__dbt_temp__dbt_tmp_vw" as 
+
+WITH date_spine AS
+( -- 103 = dd/mm/yyyy
+
+    SELECT dates = DATEADD(DAY,[value] - 1,CONVERT(DATE,''01/01/1980'', 103))
+    FROM GENERATE_SERIES(
+           1
+          ,DATEDIFF(DAY
+                   ,CONVERT(DATE,''01/01/1980'', 103)
+                   ,DATEADD(YEAR,50,CONVERT(DATE,GETDATE(), 103))) + 1
+          ,1)
+
+)
+SELECT
+   sk_fs_date        = dates
+  ,[DateDesc]	= CONVERT(CHAR(11),dates,120)
+  ,[WeekNbr]      = DATEPART(ISO_WEEK,dates)
+  ,[MonthNbr]	= DATEPART(MONTH,dates)
+  ,[QuarterNbr]	= DATEPART(QUARTER,dates)
+  ,[Year]		= DATEPART(YEAR, dates)
+  ,[DayName]		= CAST(DATENAME(WEEKDAY, dates) AS VARCHAR(20))
+  ,[WeekName]	= ''W'' + CAST(DATEPART(ISO_WEEK,dates) AS VARCHAR(2))
+  ,[MonthName]	= CAST(DATENAME(MONTH,dates) AS VARCHAR(20))
+  ,[QuarterName]	= ''Q'' + CAST(DATEPART(QUARTER,dates) AS CHAR(1))
+  ,[YearWeek]	= CAST(DATEPART(YEAR, dates) AS CHAR(4)) + 
+                       RIGHT(''0'' + CAST(DATEPART(ISO_WEEK, dates) AS VARCHAR(2)),2)
+  ,[YearWeekDesc] = CAST(DATEPART(YEAR, dates) AS CHAR(4)) + '' W'' + CAST(DATEPART(ISO_WEEK,dates) AS VARCHAR(2))
+  ,[YearMonth]	= CAST(DATEPART(YEAR, dates) AS CHAR(4)) + 
+                        SUBSTRING(CONVERT(VARCHAR(6),dates,112),5,2)
+  ,[YearMonthDesc] = CAST(DATEPART(YEAR, dates) AS CHAR(4)) + ''-'' + 
+                         RIGHT(''0'' + CAST(DATEPART(MONTH, dates) AS VARCHAR(2)),2)
+  ,[YearMonthDescFull]	= CAST(DATENAME(MONTH,dates) AS VARCHAR(20)) + '' '' + CAST(DATEPART(YEAR, dates) AS CHAR(4))
+  ,[YearQuarter]	= CAST(DATEPART(YEAR, dates) AS CHAR(4)) + CAST(DATEPART(QUARTER, dates) AS CHAR(1))
+  ,[YearQuarterDesc] = CAST(DATEPART(YEAR, dates) AS CHAR(4)) + '' '' +
+                             ''Q'' + CAST(DATEPART(QUARTER,dates) AS CHAR(1))    
+  ,[IsMonthFirstDay] = IIF(dates = DATEADD(MONTH, DATEDIFF(MONTH, 0, dates), 0), ''yes'', ''no'' )
+  ,[IsMonthLastDay] = IIF(dates = EOMONTH(dates,0),''yes'',''no'')
+  ,[MonthFirstDay] = DATEADD(DAY,1,EOMONTH(dates,-1))
+  ,[MonthLastDay]	 = EOMONTH(dates,0)
+  ,[DayOfWeek]	 = DATEPART(WEEKDAY, dates)
+  ,[DayOfMonth]	 = DATEPART(DAY, dates)
+  ,[DayOfQuarter]	 = DATEDIFF(DAY,DATEADD(QUARTER,DATEDIFF(QUARTER,0,dates),0),dates) + 1
+  ,[DayOfYear]	 = DATEPART(DAYOFYEAR, dates)
+FROM date_spine d;;');
+
+
+
+
+    
+    
+            EXEC('CREATE TABLE "DWH"."gold"."gt_fs_dates__dbt_temp" AS SELECT * FROM "DWH"."gold"."gt_fs_dates__dbt_temp__dbt_tmp_vw" 
+    OPTION (LABEL = ''dbt-fabric-dw'');
+');
+        
+
+    
+
+  
+  
+[0m04:41:16.520403 [debug] [Thread-1 (]: SQL status: OK in 6.000 seconds
+[0m04:41:16.535440 [debug] [Thread-1 (]: Applying DROP to: "DWH"."gold"."gt_fs_dates__dbt_backup"
+[0m04:41:16.536584 [debug] [Thread-1 (]: Using fabric connection "model.fabric_warehouse.gt_fs_dates"
+[0m04:41:16.537248 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_dates: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "node_id": "model.fabric_warehouse.gt_fs_dates"} */
+
+      
+    USE [DWH];
+    EXEC('DROP table IF EXISTS "gold"."gt_fs_dates__dbt_backup";');
+
+[0m04:41:16.589657 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m04:41:16.599406 [debug] [Thread-1 (]: Using fabric connection "model.fabric_warehouse.gt_fs_dates"
+[0m04:41:16.599922 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_dates: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "node_id": "model.fabric_warehouse.gt_fs_dates"} */
+USE [DWH];
+      EXEC sp_rename 'gold.gt_fs_dates', 'gt_fs_dates__dbt_backup'
+[0m04:41:17.292500 [debug] [Thread-1 (]: SQL status: OK in 1.000 seconds
+[0m04:41:17.296511 [debug] [Thread-1 (]: Using fabric connection "model.fabric_warehouse.gt_fs_dates"
+[0m04:41:17.296977 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_dates: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "node_id": "model.fabric_warehouse.gt_fs_dates"} */
+USE [DWH];
+      EXEC sp_rename 'gold.gt_fs_dates__dbt_temp', 'gt_fs_dates'
+[0m04:41:17.602462 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m04:41:17.607417 [debug] [Thread-1 (]: Applying DROP to: "DWH"."gold"."gt_fs_dates__dbt_backup"
+[0m04:41:17.608280 [debug] [Thread-1 (]: Using fabric connection "model.fabric_warehouse.gt_fs_dates"
+[0m04:41:17.608734 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_dates: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "node_id": "model.fabric_warehouse.gt_fs_dates"} */
+
+      
+    USE [DWH];
+    EXEC('DROP table IF EXISTS "gold"."gt_fs_dates__dbt_backup";');
+
+[0m04:41:17.671217 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m04:41:17.675059 [debug] [Thread-1 (]: Applying DROP to: "DWH"."gold"."gt_fs_dates__dbt_temp__dbt_tmp_vw"
+[0m04:41:17.675783 [debug] [Thread-1 (]: dbt-fabric
+[0m04:41:17.677328 [debug] [Thread-1 (]: Using fabric connection "model.fabric_warehouse.gt_fs_dates"
+[0m04:41:17.677818 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_dates: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "node_id": "model.fabric_warehouse.gt_fs_dates"} */
+
+        USE [DWH];
+        select
+            sch.name as schema_name,
+            obj.name as view_name
+        from sys.sql_expression_dependencies refs
+        inner join sys.objects obj
+        on refs.referencing_id = obj.object_id
+        inner join sys.schemas sch
+        on obj.schema_id = sch.schema_id
+        where refs.referenced_database_name = 'DWH'
+        and refs.referenced_schema_name = 'gold'
+        and refs.referenced_entity_name = 'gt_fs_dates__dbt_temp__dbt_tmp_vw'
+        and refs.referencing_class = 1
+        and obj.type = 'V'
+        
+    OPTION (LABEL = 'dbt-fabric-dw');
+
+      
+[0m04:41:17.725541 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m04:41:17.727374 [debug] [Thread-1 (]: Using fabric connection "model.fabric_warehouse.gt_fs_dates"
+[0m04:41:17.727854 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_dates: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "node_id": "model.fabric_warehouse.gt_fs_dates"} */
+
+      
+      
+    
+    USE [DWH];
+    EXEC('DROP view IF EXISTS "gold"."gt_fs_dates__dbt_temp__dbt_tmp_vw";');
+
+[0m04:41:17.788523 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m04:41:17.806008 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_dates: COMMIT
+[0m04:41:17.817691 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_dates: Close
+[0m04:41:17.821043 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '242d22c1-c2a5-4e66-873b-115469b2bce5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000200764A6210>]}
+[0m04:41:17.822028 [info ] [Thread-1 (]: 1 of 1 OK created sql table model gold.gt_fs_dates ............................. [[32mOK[0m in 7.71s]
+[0m04:41:17.823535 [debug] [Thread-1 (]: Finished running node model.fabric_warehouse.gt_fs_dates
+[0m04:41:17.825780 [debug] [MainThread]: On master: COMMIT
+[0m04:41:17.826393 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m04:41:17.826761 [debug] [MainThread]: Connection 'list_DWH' was properly closed.
+[0m04:41:17.827144 [debug] [MainThread]: Connection 'list_DWH_gold' was properly closed.
+[0m04:41:17.827478 [debug] [MainThread]: Connection 'list_DWH_silver' was properly closed.
+[0m04:41:17.827819 [debug] [MainThread]: Connection 'model.fabric_warehouse.gt_fs_dates' was properly closed.
+[0m04:41:17.828244 [info ] [MainThread]: 
+[0m04:41:17.829022 [info ] [MainThread]: Finished running 1 table model in 0 hours 0 minutes and 13.41 seconds (13.41s).
+[0m04:41:17.830679 [debug] [MainThread]: Command end result
+[0m04:41:17.904897 [debug] [MainThread]: Wrote artifact WritableManifest to D:\Python\dbt_project\dags\warehouse\target\manifest.json
+[0m04:41:17.908142 [debug] [MainThread]: Wrote artifact SemanticManifest to D:\Python\dbt_project\dags\warehouse\target\semantic_manifest.json
+[0m04:41:17.915292 [debug] [MainThread]: Wrote artifact RunExecutionResult to D:\Python\dbt_project\dags\warehouse\target\run_results.json
+[0m04:41:17.915769 [info ] [MainThread]: 
+[0m04:41:17.916749 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m04:41:17.917928 [info ] [MainThread]: 
+[0m04:41:17.919098 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=1
+[0m04:41:17.920857 [debug] [MainThread]: Command `dbt run` succeeded at 04:41:17.920699 after 21.82 seconds
+[0m04:41:17.921364 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002007626D440>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000200764D6850>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000200764D67B0>]}
+[0m04:41:17.921812 [debug] [MainThread]: Flushing usage events
+[0m04:41:18.835228 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m04:41:46.906216 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000021235714EC0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000021237843ED0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000212378439D0>]}
+
+
+============================== 04:41:46.913615 | 48e0f3a1-8a2f-4748-9d0a-2ddb98e8e89e ==============================
+[0m04:41:46.913615 [info ] [MainThread]: Running with dbt=1.11.7
+[0m04:41:46.915612 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'False', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'profiles_dir': 'C:\\Users\\salano\\.dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'use_colors': 'True', 'invocation_command': 'dbt run --full-refresh --select gt_fs_dates', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'log_path': 'D:\\Python\\dbt_project\\dags\\warehouse\\logs'}
+[0m04:41:47.614973 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '48e0f3a1-8a2f-4748-9d0a-2ddb98e8e89e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000021235BB0FC0>]}
+[0m04:41:47.724691 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '48e0f3a1-8a2f-4748-9d0a-2ddb98e8e89e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000021237F9D040>]}
+[0m04:41:47.725729 [info ] [MainThread]: Registered adapter: fabric=1.9.8
+[0m04:41:48.173298 [debug] [MainThread]: checksum: b80718358155fc17c3559352095564dd56ada1cc1a1c0ef2e62c857e71583775, vars: {}, profile: , target: , version: 1.11.7
+[0m04:41:48.655251 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m04:41:48.655804 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m04:41:48.656157 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m04:41:48.757523 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '48e0f3a1-8a2f-4748-9d0a-2ddb98e8e89e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002123844E450>]}
+[0m04:41:48.983064 [debug] [MainThread]: Wrote artifact WritableManifest to D:\Python\dbt_project\dags\warehouse\target\manifest.json
+[0m04:41:48.987079 [debug] [MainThread]: Wrote artifact SemanticManifest to D:\Python\dbt_project\dags\warehouse\target\semantic_manifest.json
+[0m04:41:49.079863 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '48e0f3a1-8a2f-4748-9d0a-2ddb98e8e89e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000212382B4E60>]}
+[0m04:41:49.080979 [info ] [MainThread]: Found 8 models, 4 snapshots, 1 analysis, 71 data tests, 6 sources, 768 macros
+[0m04:41:49.082268 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '48e0f3a1-8a2f-4748-9d0a-2ddb98e8e89e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000212381699B0>]}
+[0m04:41:49.086601 [info ] [MainThread]: 
+[0m04:41:49.087564 [info ] [MainThread]: Concurrency: 4 threads (target='prod')
+[0m04:41:49.088609 [info ] [MainThread]: 
+[0m04:41:49.089885 [debug] [MainThread]: Acquiring new fabric connection 'master'
+[0m04:41:49.091438 [debug] [ThreadPool]: Acquiring new fabric connection 'list_DWH'
+[0m04:41:49.138482 [debug] [ThreadPool]: dbt-fabric
+[0m04:41:49.139831 [debug] [ThreadPool]: Using fabric connection "list_DWH"
+[0m04:41:49.140712 [debug] [ThreadPool]: On list_DWH: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "connection_name": "list_DWH"} */
+USE [DWH];
+    select  name as [schema]
+    from sys.schemas  
+    OPTION (LABEL = 'dbt-fabric-dw');
+
+  
+[0m04:41:49.141840 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m04:41:49.143030 [debug] [ThreadPool]: fabric adapter: Using connection string: DRIVER={ODBC Driver 18 for SQL Server};SERVER=kqs5jtdeedzebgwsqvvke4iowu-aezc4s5igg7udef7qepchtqude.datawarehouse.fabric.microsoft.com;Database=DWH;Pooling=true;SQL_ATTR_TRACE=SQL_OPT_TRACE_OFF;Authentication=ActiveDirectoryServicePrincipal;UID={6fbbf7e4-ec03-4db4-bdfe-74fce58c96bf};PWD=***;encrypt=Yes;TrustServerCertificate=No;APP=dbt-fabric/1.9.8;ConnectRetryCount=3;ConnectRetryInterval=10
+[0m04:41:50.438614 [debug] [ThreadPool]: fabric adapter: Connected to db: DWH
+[0m04:41:50.439139 [warn ] [ThreadPool]: fabric adapter: No workspace_id provided; skipping snapshot management.
+[0m04:41:50.483997 [debug] [ThreadPool]: SQL status: OK in 1.000 seconds
+[0m04:41:50.485681 [debug] [ThreadPool]: On list_DWH: Close
+[0m04:41:50.496036 [debug] [ThreadPool]: Acquiring new fabric connection 'list_DWH_gold'
+[0m04:41:50.503940 [debug] [ThreadPool]: dbt-fabric
+[0m04:41:50.504591 [debug] [ThreadPool]: Acquiring new fabric connection 'list_DWH_silver'
+[0m04:41:50.505114 [debug] [ThreadPool]: Using fabric connection "list_DWH_gold"
+[0m04:41:50.508102 [debug] [ThreadPool]: dbt-fabric
+[0m04:41:50.508647 [debug] [ThreadPool]: On list_DWH_gold: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "connection_name": "list_DWH_gold"} */
+USE [DWH];
+    with base as (
+      select
+        DB_NAME() as [database],
+        t.name as [name],
+        SCHEMA_NAME(t.schema_id) as [schema],
+        'table' as table_type
+      from sys.tables as t 
+      union all
+      select
+        DB_NAME() as [database],
+        v.name as [name],
+        SCHEMA_NAME(v.schema_id) as [schema],
+        'view' as table_type
+      from sys.views as v 
+    )
+    select * from base
+    where [schema] like 'gold'
+    
+    OPTION (LABEL = 'dbt-fabric-dw');
+
+  
+[0m04:41:50.509185 [debug] [ThreadPool]: Using fabric connection "list_DWH_silver"
+[0m04:41:50.509893 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m04:41:50.510918 [debug] [ThreadPool]: On list_DWH_silver: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "connection_name": "list_DWH_silver"} */
+USE [DWH];
+    with base as (
+      select
+        DB_NAME() as [database],
+        t.name as [name],
+        SCHEMA_NAME(t.schema_id) as [schema],
+        'table' as table_type
+      from sys.tables as t 
+      union all
+      select
+        DB_NAME() as [database],
+        v.name as [name],
+        SCHEMA_NAME(v.schema_id) as [schema],
+        'view' as table_type
+      from sys.views as v 
+    )
+    select * from base
+    where [schema] like 'silver'
+    
+    OPTION (LABEL = 'dbt-fabric-dw');
+
+  
+[0m04:41:50.512564 [debug] [ThreadPool]: fabric adapter: Using connection string: DRIVER={ODBC Driver 18 for SQL Server};SERVER=kqs5jtdeedzebgwsqvvke4iowu-aezc4s5igg7udef7qepchtqude.datawarehouse.fabric.microsoft.com;Database=DWH;Pooling=true;SQL_ATTR_TRACE=SQL_OPT_TRACE_OFF;Authentication=ActiveDirectoryServicePrincipal;UID={6fbbf7e4-ec03-4db4-bdfe-74fce58c96bf};PWD=***;encrypt=Yes;TrustServerCertificate=No;APP=dbt-fabric/1.9.8;ConnectRetryCount=3;ConnectRetryInterval=10
+[0m04:41:50.513422 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m04:41:50.514272 [debug] [ThreadPool]: fabric adapter: Using connection string: DRIVER={ODBC Driver 18 for SQL Server};SERVER=kqs5jtdeedzebgwsqvvke4iowu-aezc4s5igg7udef7qepchtqude.datawarehouse.fabric.microsoft.com;Database=DWH;Pooling=true;SQL_ATTR_TRACE=SQL_OPT_TRACE_OFF;Authentication=ActiveDirectoryServicePrincipal;UID={6fbbf7e4-ec03-4db4-bdfe-74fce58c96bf};PWD=***;encrypt=Yes;TrustServerCertificate=No;APP=dbt-fabric/1.9.8;ConnectRetryCount=3;ConnectRetryInterval=10
+[0m04:41:50.515493 [debug] [ThreadPool]: fabric adapter: Connected to db: DWH
+[0m04:41:50.578655 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m04:41:50.580478 [debug] [ThreadPool]: On list_DWH_silver: ROLLBACK
+[0m04:41:50.580882 [debug] [ThreadPool]: On list_DWH_silver: Close
+[0m04:41:51.278881 [debug] [ThreadPool]: fabric adapter: Connected to db: DWH
+[0m04:41:51.344792 [debug] [ThreadPool]: SQL status: OK in 1.000 seconds
+[0m04:41:51.346754 [debug] [ThreadPool]: On list_DWH_gold: ROLLBACK
+[0m04:41:51.347152 [debug] [ThreadPool]: On list_DWH_gold: Close
+[0m04:41:51.349701 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '48e0f3a1-8a2f-4748-9d0a-2ddb98e8e89e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002123624FEE0>]}
+[0m04:41:51.350228 [debug] [MainThread]: On master: COMMIT
+[0m04:41:51.357116 [debug] [Thread-1 (]: Began running node model.fabric_warehouse.gt_fs_dates
+[0m04:41:51.357771 [info ] [Thread-1 (]: 1 of 1 START sql table model gold.gt_fs_dates .................................. [RUN]
+[0m04:41:51.358911 [debug] [Thread-1 (]: Acquiring new fabric connection 'model.fabric_warehouse.gt_fs_dates'
+[0m04:41:51.359646 [debug] [Thread-1 (]: Began compiling node model.fabric_warehouse.gt_fs_dates
+[0m04:41:51.379149 [debug] [Thread-1 (]: Writing injected SQL for node "model.fabric_warehouse.gt_fs_dates"
+[0m04:41:51.380431 [debug] [Thread-1 (]: Began executing node model.fabric_warehouse.gt_fs_dates
+[0m04:41:51.419588 [debug] [Thread-1 (]: Applying DROP to: "DWH"."gold"."gt_fs_dates__dbt_temp"
+[0m04:41:51.429887 [debug] [Thread-1 (]: Using fabric connection "model.fabric_warehouse.gt_fs_dates"
+[0m04:41:51.430567 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_dates: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "node_id": "model.fabric_warehouse.gt_fs_dates"} */
+
+      
+    USE [DWH];
+    EXEC('DROP table IF EXISTS "gold"."gt_fs_dates__dbt_temp";');
+
+[0m04:41:51.431020 [debug] [Thread-1 (]: Opening a new connection, currently in state init
+[0m04:41:51.431496 [debug] [Thread-1 (]: fabric adapter: Using connection string: DRIVER={ODBC Driver 18 for SQL Server};SERVER=kqs5jtdeedzebgwsqvvke4iowu-aezc4s5igg7udef7qepchtqude.datawarehouse.fabric.microsoft.com;Database=DWH;Pooling=true;SQL_ATTR_TRACE=SQL_OPT_TRACE_OFF;Authentication=ActiveDirectoryServicePrincipal;UID={6fbbf7e4-ec03-4db4-bdfe-74fce58c96bf};PWD=***;encrypt=Yes;TrustServerCertificate=No;APP=dbt-fabric/1.9.8;ConnectRetryCount=3;ConnectRetryInterval=10
+[0m04:41:52.096903 [debug] [Thread-1 (]: fabric adapter: Connected to db: DWH
+[0m04:41:52.154661 [debug] [Thread-1 (]: SQL status: OK in 1.000 seconds
+[0m04:41:52.158382 [debug] [Thread-1 (]: Applying DROP to: "DWH"."gold"."gt_fs_dates__dbt_temp__dbt_tmp_vw"
+[0m04:41:52.159538 [debug] [Thread-1 (]: dbt-fabric
+[0m04:41:52.162668 [debug] [Thread-1 (]: Using fabric connection "model.fabric_warehouse.gt_fs_dates"
+[0m04:41:52.163926 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_dates: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "node_id": "model.fabric_warehouse.gt_fs_dates"} */
+
+        USE [DWH];
+        select
+            sch.name as schema_name,
+            obj.name as view_name
+        from sys.sql_expression_dependencies refs
+        inner join sys.objects obj
+        on refs.referencing_id = obj.object_id
+        inner join sys.schemas sch
+        on obj.schema_id = sch.schema_id
+        where refs.referenced_database_name = 'DWH'
+        and refs.referenced_schema_name = 'gold'
+        and refs.referenced_entity_name = 'gt_fs_dates__dbt_temp__dbt_tmp_vw'
+        and refs.referencing_class = 1
+        and obj.type = 'V'
+        
+    OPTION (LABEL = 'dbt-fabric-dw');
+
+      
+[0m04:41:52.220899 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m04:41:52.223146 [debug] [Thread-1 (]: Using fabric connection "model.fabric_warehouse.gt_fs_dates"
+[0m04:41:52.223626 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_dates: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "node_id": "model.fabric_warehouse.gt_fs_dates"} */
+
+      
+      
+    
+    USE [DWH];
+    EXEC('DROP view IF EXISTS "gold"."gt_fs_dates__dbt_temp__dbt_tmp_vw";');
+
+[0m04:41:52.273688 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m04:41:52.292912 [debug] [Thread-1 (]: dbt-fabric
+[0m04:41:52.298615 [debug] [Thread-1 (]: Applying DROP to: "DWH"."gold"."gt_fs_dates__dbt_temp__dbt_tmp_vw"
+[0m04:41:52.300520 [debug] [Thread-1 (]: dbt-fabric
+[0m04:41:52.301301 [debug] [Thread-1 (]: Using fabric connection "model.fabric_warehouse.gt_fs_dates"
+[0m04:41:52.301918 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_dates: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "node_id": "model.fabric_warehouse.gt_fs_dates"} */
+
+        USE [DWH];
+        select
+            sch.name as schema_name,
+            obj.name as view_name
+        from sys.sql_expression_dependencies refs
+        inner join sys.objects obj
+        on refs.referencing_id = obj.object_id
+        inner join sys.schemas sch
+        on obj.schema_id = sch.schema_id
+        where refs.referenced_database_name = 'DWH'
+        and refs.referenced_schema_name = 'gold'
+        and refs.referenced_entity_name = 'gt_fs_dates__dbt_temp__dbt_tmp_vw'
+        and refs.referencing_class = 1
+        and obj.type = 'V'
+        
+    OPTION (LABEL = 'dbt-fabric-dw');
+
+      
+[0m04:41:52.361687 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m04:41:52.363414 [debug] [Thread-1 (]: Using fabric connection "model.fabric_warehouse.gt_fs_dates"
+[0m04:41:52.364120 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_dates: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "node_id": "model.fabric_warehouse.gt_fs_dates"} */
+
+      
+      
+    
+    USE [DWH];
+    EXEC('DROP view IF EXISTS "gold"."gt_fs_dates__dbt_temp__dbt_tmp_vw";');
+
+[0m04:41:52.412599 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m04:41:52.423220 [debug] [Thread-1 (]: Writing runtime sql for node "model.fabric_warehouse.gt_fs_dates"
+[0m04:41:52.424368 [debug] [Thread-1 (]: Using fabric connection "model.fabric_warehouse.gt_fs_dates"
+[0m04:41:52.425088 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_dates: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "node_id": "model.fabric_warehouse.gt_fs_dates"} */
+
+  
+    
+    
+    USE [DWH];
+    
+    
+
+    EXEC('create view "gold"."gt_fs_dates__dbt_temp__dbt_tmp_vw" as 
+
+WITH date_spine AS
+( -- 103 = dd/mm/yyyy
+
+    SELECT dates = DATEADD(DAY,[value] - 1,CONVERT(DATE,''01/01/1980'', 103))
+    FROM GENERATE_SERIES(
+           1
+          ,DATEDIFF(DAY
+                   ,CONVERT(DATE,''01/01/1980'', 103)
+                   ,DATEADD(YEAR,50,CONVERT(DATE,GETDATE(), 103))) + 1
+          ,1)
+
+)
+SELECT
+   sk_fs_date        = dates
+  ,[DateDesc]	= CONVERT(CHAR(11),dates,120)
+  ,[WeekNbr]      = DATEPART(ISO_WEEK,dates)
+  ,[MonthNbr]	= DATEPART(MONTH,dates)
+  ,[QuarterNbr]	= DATEPART(QUARTER,dates)
+  ,[Year]		= DATEPART(YEAR, dates)
+  ,[DayName]		= CAST(DATENAME(WEEKDAY, dates) AS VARCHAR(20))
+  ,[WeekName]	= ''W'' + CAST(DATEPART(ISO_WEEK,dates) AS VARCHAR(2))
+  ,[MonthName]	= CAST(DATENAME(MONTH,dates) AS VARCHAR(20))
+  ,[QuarterName]	= ''Q'' + CAST(DATEPART(QUARTER,dates) AS CHAR(1))
+  ,[YearWeek]	= CAST(DATEPART(YEAR, dates) AS CHAR(4)) + 
+                       RIGHT(''0'' + CAST(DATEPART(ISO_WEEK, dates) AS VARCHAR(2)),2)
+  ,[YearWeekDesc] = CAST(DATEPART(YEAR, dates) AS CHAR(4)) + '' W'' + CAST(DATEPART(ISO_WEEK,dates) AS VARCHAR(2))
+  ,[YearMonth]	= CAST(DATEPART(YEAR, dates) AS CHAR(4)) + 
+                        SUBSTRING(CONVERT(VARCHAR(6),dates,112),5,2)
+  ,[YearMonthDesc] = CAST(DATEPART(YEAR, dates) AS CHAR(4)) + ''-'' + 
+                         RIGHT(''0'' + CAST(DATEPART(MONTH, dates) AS VARCHAR(2)),2)
+  ,[YearMonthDescFull]	= CAST(DATENAME(MONTH,dates) AS VARCHAR(20)) + '' '' + CAST(DATEPART(YEAR, dates) AS CHAR(4))
+  ,[YearQuarter]	= CAST(DATEPART(YEAR, dates) AS CHAR(4)) + CAST(DATEPART(QUARTER, dates) AS CHAR(1))
+  ,[YearQuarterDesc] = CAST(DATEPART(YEAR, dates) AS CHAR(4)) + '' '' +
+                             ''Q'' + CAST(DATEPART(QUARTER,dates) AS CHAR(1))    
+  ,[IsMonthFirstDay] = IIF(dates = DATEADD(MONTH, DATEDIFF(MONTH, 0, dates), 0), ''yes'', ''no'' )
+  ,[IsMonthLastDay] = IIF(dates = EOMONTH(dates,0),''yes'',''no'')
+  ,[MonthFirstDay] = DATEADD(DAY,1,EOMONTH(dates,-1))
+  ,[MonthLastDay]	 = EOMONTH(dates,0)
+  ,[DayOfWeek]	 = DATEPART(WEEKDAY, dates)
+  ,[DayOfMonth]	 = DATEPART(DAY, dates)
+  ,[DayOfQuarter]	 = DATEDIFF(DAY,DATEADD(QUARTER,DATEDIFF(QUARTER,0,dates),0),dates) + 1
+  ,[DayOfYear]	 = DATEPART(DAYOFYEAR, dates)
+FROM date_spine d;;');
+
+
+
+
+    
+    
+            EXEC('CREATE TABLE "DWH"."gold"."gt_fs_dates__dbt_temp" AS SELECT * FROM "DWH"."gold"."gt_fs_dates__dbt_temp__dbt_tmp_vw" 
+    OPTION (LABEL = ''dbt-fabric-dw'');
+');
+        
+
+    
+
+  
+  
+[0m04:41:53.392777 [debug] [Thread-1 (]: SQL status: OK in 1.000 seconds
+[0m04:41:53.401711 [debug] [Thread-1 (]: Applying DROP to: "DWH"."gold"."gt_fs_dates__dbt_backup"
+[0m04:41:53.402523 [debug] [Thread-1 (]: Using fabric connection "model.fabric_warehouse.gt_fs_dates"
+[0m04:41:53.402976 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_dates: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "node_id": "model.fabric_warehouse.gt_fs_dates"} */
+
+      
+    USE [DWH];
+    EXEC('DROP table IF EXISTS "gold"."gt_fs_dates__dbt_backup";');
+
+[0m04:41:53.444655 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m04:41:53.452005 [debug] [Thread-1 (]: Using fabric connection "model.fabric_warehouse.gt_fs_dates"
+[0m04:41:53.452501 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_dates: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "node_id": "model.fabric_warehouse.gt_fs_dates"} */
+USE [DWH];
+      EXEC sp_rename 'gold.gt_fs_dates', 'gt_fs_dates__dbt_backup'
+[0m04:41:53.747719 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m04:41:53.751488 [debug] [Thread-1 (]: Using fabric connection "model.fabric_warehouse.gt_fs_dates"
+[0m04:41:53.751987 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_dates: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "node_id": "model.fabric_warehouse.gt_fs_dates"} */
+USE [DWH];
+      EXEC sp_rename 'gold.gt_fs_dates__dbt_temp', 'gt_fs_dates'
+[0m04:41:54.036975 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m04:41:54.046567 [debug] [Thread-1 (]: Applying DROP to: "DWH"."gold"."gt_fs_dates__dbt_backup"
+[0m04:41:54.047605 [debug] [Thread-1 (]: Using fabric connection "model.fabric_warehouse.gt_fs_dates"
+[0m04:41:54.048174 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_dates: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "node_id": "model.fabric_warehouse.gt_fs_dates"} */
+
+      
+    USE [DWH];
+    EXEC('DROP table IF EXISTS "gold"."gt_fs_dates__dbt_backup";');
+
+[0m04:41:54.102504 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m04:41:54.106185 [debug] [Thread-1 (]: Applying DROP to: "DWH"."gold"."gt_fs_dates__dbt_temp__dbt_tmp_vw"
+[0m04:41:54.106941 [debug] [Thread-1 (]: dbt-fabric
+[0m04:41:54.109417 [debug] [Thread-1 (]: Using fabric connection "model.fabric_warehouse.gt_fs_dates"
+[0m04:41:54.110235 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_dates: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "node_id": "model.fabric_warehouse.gt_fs_dates"} */
+
+        USE [DWH];
+        select
+            sch.name as schema_name,
+            obj.name as view_name
+        from sys.sql_expression_dependencies refs
+        inner join sys.objects obj
+        on refs.referencing_id = obj.object_id
+        inner join sys.schemas sch
+        on obj.schema_id = sch.schema_id
+        where refs.referenced_database_name = 'DWH'
+        and refs.referenced_schema_name = 'gold'
+        and refs.referenced_entity_name = 'gt_fs_dates__dbt_temp__dbt_tmp_vw'
+        and refs.referencing_class = 1
+        and obj.type = 'V'
+        
+    OPTION (LABEL = 'dbt-fabric-dw');
+
+      
+[0m04:41:54.158007 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m04:41:54.160354 [debug] [Thread-1 (]: Using fabric connection "model.fabric_warehouse.gt_fs_dates"
+[0m04:41:54.160973 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_dates: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "node_id": "model.fabric_warehouse.gt_fs_dates"} */
+
+      
+      
+    
+    USE [DWH];
+    EXEC('DROP view IF EXISTS "gold"."gt_fs_dates__dbt_temp__dbt_tmp_vw";');
+
+[0m04:41:54.230904 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m04:41:54.252473 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_dates: COMMIT
+[0m04:41:54.262465 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_dates: Close
+[0m04:41:54.266454 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '48e0f3a1-8a2f-4748-9d0a-2ddb98e8e89e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000212387D1250>]}
+[0m04:41:54.267323 [info ] [Thread-1 (]: 1 of 1 OK created sql table model gold.gt_fs_dates ............................. [[32mOK[0m in 2.91s]
+[0m04:41:54.269002 [debug] [Thread-1 (]: Finished running node model.fabric_warehouse.gt_fs_dates
+[0m04:41:54.271401 [debug] [MainThread]: On master: COMMIT
+[0m04:41:54.271975 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m04:41:54.272415 [debug] [MainThread]: Connection 'list_DWH' was properly closed.
+[0m04:41:54.272802 [debug] [MainThread]: Connection 'list_DWH_gold' was properly closed.
+[0m04:41:54.273154 [debug] [MainThread]: Connection 'list_DWH_silver' was properly closed.
+[0m04:41:54.273490 [debug] [MainThread]: Connection 'model.fabric_warehouse.gt_fs_dates' was properly closed.
+[0m04:41:54.273881 [info ] [MainThread]: 
+[0m04:41:54.274565 [info ] [MainThread]: Finished running 1 table model in 0 hours 0 minutes and 5.18 seconds (5.18s).
+[0m04:41:54.276854 [debug] [MainThread]: Command end result
+[0m04:41:54.369712 [debug] [MainThread]: Wrote artifact WritableManifest to D:\Python\dbt_project\dags\warehouse\target\manifest.json
+[0m04:41:54.372655 [debug] [MainThread]: Wrote artifact SemanticManifest to D:\Python\dbt_project\dags\warehouse\target\semantic_manifest.json
+[0m04:41:54.381973 [debug] [MainThread]: Wrote artifact RunExecutionResult to D:\Python\dbt_project\dags\warehouse\target\run_results.json
+[0m04:41:54.382469 [info ] [MainThread]: 
+[0m04:41:54.383438 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m04:41:54.384313 [info ] [MainThread]: 
+[0m04:41:54.385297 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=1
+[0m04:41:54.386933 [debug] [MainThread]: Command `dbt run` succeeded at 04:41:54.386750 after 7.80 seconds
+[0m04:41:54.387380 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000212387A4310>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002123885F4D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002123885F930>]}
+[0m04:41:54.387953 [debug] [MainThread]: Flushing usage events
+[0m04:41:55.197993 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m04:45:09.391726 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002189C744EC0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002189E86FED0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002189E86FC50>]}
+
+
+============================== 04:45:09.397931 | ddb3e07a-8de2-459c-a947-05bf0b78e73c ==============================
+[0m04:45:09.397931 [info ] [MainThread]: Running with dbt=1.11.7
+[0m04:45:09.399008 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'empty': 'False', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'profiles_dir': 'C:\\Users\\salano\\.dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'invocation_command': 'dbt run --full-refresh --select gt_fs_orders', 'use_colors': 'True', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'log_path': 'D:\\Python\\dbt_project\\dags\\warehouse\\logs'}
+[0m04:45:09.940556 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'ddb3e07a-8de2-459c-a947-05bf0b78e73c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002189CBE0E90>]}
+[0m04:45:10.037700 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'ddb3e07a-8de2-459c-a947-05bf0b78e73c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002189F03D040>]}
+[0m04:45:10.038667 [info ] [MainThread]: Registered adapter: fabric=1.9.8
+[0m04:45:10.429848 [debug] [MainThread]: checksum: b80718358155fc17c3559352095564dd56ada1cc1a1c0ef2e62c857e71583775, vars: {}, profile: , target: , version: 1.11.7
+[0m04:45:10.810758 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 1 files changed.
+[0m04:45:10.811665 [debug] [MainThread]: Partial parsing: updated file: fabric_warehouse://models\gold\fs\gt_fs_orders.sql
+[0m04:45:11.104087 [info ] [MainThread]: 
+            CREATE STATISTICS OrderFactStatistics on "DWH"."silver"."gt_fs_orders" (OrderID) WITH FULLSCAN;
+
+
+[0m04:45:11.253334 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'ddb3e07a-8de2-459c-a947-05bf0b78e73c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002189F5CC950>]}
+[0m04:45:11.434533 [debug] [MainThread]: Wrote artifact WritableManifest to D:\Python\dbt_project\dags\warehouse\target\manifest.json
+[0m04:45:11.438182 [debug] [MainThread]: Wrote artifact SemanticManifest to D:\Python\dbt_project\dags\warehouse\target\semantic_manifest.json
+[0m04:45:11.486021 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'ddb3e07a-8de2-459c-a947-05bf0b78e73c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002189F354E60>]}
+[0m04:45:11.486713 [info ] [MainThread]: Found 8 models, 4 snapshots, 1 analysis, 71 data tests, 6 sources, 768 macros
+[0m04:45:11.487714 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'ddb3e07a-8de2-459c-a947-05bf0b78e73c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002189F8F9710>]}
+[0m04:45:11.490858 [info ] [MainThread]: 
+[0m04:45:11.491574 [info ] [MainThread]: Concurrency: 4 threads (target='prod')
+[0m04:45:11.492223 [info ] [MainThread]: 
+[0m04:45:11.493449 [debug] [MainThread]: Acquiring new fabric connection 'master'
+[0m04:45:11.495311 [debug] [ThreadPool]: Acquiring new fabric connection 'list_DWH'
+[0m04:45:11.510871 [debug] [ThreadPool]: dbt-fabric
+[0m04:45:11.511450 [debug] [ThreadPool]: Using fabric connection "list_DWH"
+[0m04:45:11.511830 [debug] [ThreadPool]: On list_DWH: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "connection_name": "list_DWH"} */
+USE [DWH];
+    select  name as [schema]
+    from sys.schemas  
+    OPTION (LABEL = 'dbt-fabric-dw');
+
+  
+[0m04:45:11.512194 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m04:45:11.512846 [debug] [ThreadPool]: fabric adapter: Using connection string: DRIVER={ODBC Driver 18 for SQL Server};SERVER=kqs5jtdeedzebgwsqvvke4iowu-aezc4s5igg7udef7qepchtqude.datawarehouse.fabric.microsoft.com;Database=DWH;Pooling=true;SQL_ATTR_TRACE=SQL_OPT_TRACE_OFF;Authentication=ActiveDirectoryServicePrincipal;UID={6fbbf7e4-ec03-4db4-bdfe-74fce58c96bf};PWD=***;encrypt=Yes;TrustServerCertificate=No;APP=dbt-fabric/1.9.8;ConnectRetryCount=3;ConnectRetryInterval=10
+[0m04:45:13.155546 [debug] [ThreadPool]: fabric adapter: Connected to db: DWH
+[0m04:45:13.156131 [warn ] [ThreadPool]: fabric adapter: No workspace_id provided; skipping snapshot management.
+[0m04:45:13.197597 [debug] [ThreadPool]: SQL status: OK in 2.000 seconds
+[0m04:45:13.199308 [debug] [ThreadPool]: On list_DWH: Close
+[0m04:45:13.208382 [debug] [ThreadPool]: Acquiring new fabric connection 'list_DWH_silver'
+[0m04:45:13.215571 [debug] [ThreadPool]: Acquiring new fabric connection 'list_DWH_gold'
+[0m04:45:13.218091 [debug] [ThreadPool]: dbt-fabric
+[0m04:45:13.221080 [debug] [ThreadPool]: dbt-fabric
+[0m04:45:13.221668 [debug] [ThreadPool]: Using fabric connection "list_DWH_silver"
+[0m04:45:13.222189 [debug] [ThreadPool]: Using fabric connection "list_DWH_gold"
+[0m04:45:13.222673 [debug] [ThreadPool]: On list_DWH_silver: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "connection_name": "list_DWH_silver"} */
+USE [DWH];
+    with base as (
+      select
+        DB_NAME() as [database],
+        t.name as [name],
+        SCHEMA_NAME(t.schema_id) as [schema],
+        'table' as table_type
+      from sys.tables as t 
+      union all
+      select
+        DB_NAME() as [database],
+        v.name as [name],
+        SCHEMA_NAME(v.schema_id) as [schema],
+        'view' as table_type
+      from sys.views as v 
+    )
+    select * from base
+    where [schema] like 'silver'
+    
+    OPTION (LABEL = 'dbt-fabric-dw');
+
+  
+[0m04:45:13.223188 [debug] [ThreadPool]: On list_DWH_gold: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "connection_name": "list_DWH_gold"} */
+USE [DWH];
+    with base as (
+      select
+        DB_NAME() as [database],
+        t.name as [name],
+        SCHEMA_NAME(t.schema_id) as [schema],
+        'table' as table_type
+      from sys.tables as t 
+      union all
+      select
+        DB_NAME() as [database],
+        v.name as [name],
+        SCHEMA_NAME(v.schema_id) as [schema],
+        'view' as table_type
+      from sys.views as v 
+    )
+    select * from base
+    where [schema] like 'gold'
+    
+    OPTION (LABEL = 'dbt-fabric-dw');
+
+  
+[0m04:45:13.223667 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m04:45:13.224132 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m04:45:13.224633 [debug] [ThreadPool]: fabric adapter: Using connection string: DRIVER={ODBC Driver 18 for SQL Server};SERVER=kqs5jtdeedzebgwsqvvke4iowu-aezc4s5igg7udef7qepchtqude.datawarehouse.fabric.microsoft.com;Database=DWH;Pooling=true;SQL_ATTR_TRACE=SQL_OPT_TRACE_OFF;Authentication=ActiveDirectoryServicePrincipal;UID={6fbbf7e4-ec03-4db4-bdfe-74fce58c96bf};PWD=***;encrypt=Yes;TrustServerCertificate=No;APP=dbt-fabric/1.9.8;ConnectRetryCount=3;ConnectRetryInterval=10
+[0m04:45:13.225157 [debug] [ThreadPool]: fabric adapter: Using connection string: DRIVER={ODBC Driver 18 for SQL Server};SERVER=kqs5jtdeedzebgwsqvvke4iowu-aezc4s5igg7udef7qepchtqude.datawarehouse.fabric.microsoft.com;Database=DWH;Pooling=true;SQL_ATTR_TRACE=SQL_OPT_TRACE_OFF;Authentication=ActiveDirectoryServicePrincipal;UID={6fbbf7e4-ec03-4db4-bdfe-74fce58c96bf};PWD=***;encrypt=Yes;TrustServerCertificate=No;APP=dbt-fabric/1.9.8;ConnectRetryCount=3;ConnectRetryInterval=10
+[0m04:45:13.225969 [debug] [ThreadPool]: fabric adapter: Connected to db: DWH
+[0m04:45:13.303564 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m04:45:13.305353 [debug] [ThreadPool]: On list_DWH_gold: ROLLBACK
+[0m04:45:13.305745 [debug] [ThreadPool]: On list_DWH_gold: Close
+[0m04:45:14.275085 [debug] [ThreadPool]: fabric adapter: Connected to db: DWH
+[0m04:45:14.336629 [debug] [ThreadPool]: SQL status: OK in 1.000 seconds
+[0m04:45:14.338391 [debug] [ThreadPool]: On list_DWH_silver: ROLLBACK
+[0m04:45:14.338781 [debug] [ThreadPool]: On list_DWH_silver: Close
+[0m04:45:14.341251 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'ddb3e07a-8de2-459c-a947-05bf0b78e73c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002189FAA8EF0>]}
+[0m04:45:14.341780 [debug] [MainThread]: On master: COMMIT
+[0m04:45:14.348829 [debug] [Thread-1 (]: Began running node model.fabric_warehouse.gt_fs_orders
+[0m04:45:14.350142 [info ] [Thread-1 (]: 1 of 1 START sql incremental model gold.gt_fs_orders ........................... [RUN]
+[0m04:45:14.351653 [debug] [Thread-1 (]: Acquiring new fabric connection 'model.fabric_warehouse.gt_fs_orders'
+[0m04:45:14.352115 [debug] [Thread-1 (]: Began compiling node model.fabric_warehouse.gt_fs_orders
+[0m04:45:14.365910 [debug] [Thread-1 (]: Writing injected SQL for node "model.fabric_warehouse.gt_fs_orders"
+[0m04:45:14.367667 [debug] [Thread-1 (]: Began executing node model.fabric_warehouse.gt_fs_orders
+[0m04:45:14.413572 [debug] [Thread-1 (]: Applying DROP to: "DWH"."gold"."gt_fs_orders__dbt_tmp_vw"
+[0m04:45:14.422174 [debug] [Thread-1 (]: dbt-fabric
+[0m04:45:14.423853 [debug] [Thread-1 (]: Using fabric connection "model.fabric_warehouse.gt_fs_orders"
+[0m04:45:14.424348 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_orders: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "node_id": "model.fabric_warehouse.gt_fs_orders"} */
+
+        USE [DWH];
+        select
+            sch.name as schema_name,
+            obj.name as view_name
+        from sys.sql_expression_dependencies refs
+        inner join sys.objects obj
+        on refs.referencing_id = obj.object_id
+        inner join sys.schemas sch
+        on obj.schema_id = sch.schema_id
+        where refs.referenced_database_name = 'DWH'
+        and refs.referenced_schema_name = 'gold'
+        and refs.referenced_entity_name = 'gt_fs_orders__dbt_tmp_vw'
+        and refs.referencing_class = 1
+        and obj.type = 'V'
+        
+    OPTION (LABEL = 'dbt-fabric-dw');
+
+      
+[0m04:45:14.424817 [debug] [Thread-1 (]: Opening a new connection, currently in state init
+[0m04:45:14.425383 [debug] [Thread-1 (]: fabric adapter: Using connection string: DRIVER={ODBC Driver 18 for SQL Server};SERVER=kqs5jtdeedzebgwsqvvke4iowu-aezc4s5igg7udef7qepchtqude.datawarehouse.fabric.microsoft.com;Database=DWH;Pooling=true;SQL_ATTR_TRACE=SQL_OPT_TRACE_OFF;Authentication=ActiveDirectoryServicePrincipal;UID={6fbbf7e4-ec03-4db4-bdfe-74fce58c96bf};PWD=***;encrypt=Yes;TrustServerCertificate=No;APP=dbt-fabric/1.9.8;ConnectRetryCount=3;ConnectRetryInterval=10
+[0m04:45:15.539906 [debug] [Thread-1 (]: fabric adapter: Connected to db: DWH
+[0m04:45:15.613776 [debug] [Thread-1 (]: SQL status: OK in 1.000 seconds
+[0m04:45:15.616953 [debug] [Thread-1 (]: Using fabric connection "model.fabric_warehouse.gt_fs_orders"
+[0m04:45:15.617506 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_orders: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "node_id": "model.fabric_warehouse.gt_fs_orders"} */
+
+      
+      
+    
+    USE [DWH];
+    EXEC('DROP view IF EXISTS "gold"."gt_fs_orders__dbt_tmp_vw";');
+
+[0m04:45:15.666661 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m04:45:15.670446 [debug] [Thread-1 (]: Applying DROP to: "DWH"."gold"."gt_fs_orders"
+[0m04:45:15.671238 [debug] [Thread-1 (]: Using fabric connection "model.fabric_warehouse.gt_fs_orders"
+[0m04:45:15.671692 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_orders: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "node_id": "model.fabric_warehouse.gt_fs_orders"} */
+
+      
+    USE [DWH];
+    EXEC('DROP table IF EXISTS "gold"."gt_fs_orders";');
+
+[0m04:45:15.738055 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m04:45:15.756543 [debug] [Thread-1 (]: dbt-fabric
+[0m04:45:15.759484 [debug] [Thread-1 (]: Applying DROP to: "DWH"."gold"."gt_fs_orders__dbt_tmp_vw"
+[0m04:45:15.760180 [debug] [Thread-1 (]: dbt-fabric
+[0m04:45:15.760700 [debug] [Thread-1 (]: Using fabric connection "model.fabric_warehouse.gt_fs_orders"
+[0m04:45:15.761225 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_orders: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "node_id": "model.fabric_warehouse.gt_fs_orders"} */
+
+        USE [DWH];
+        select
+            sch.name as schema_name,
+            obj.name as view_name
+        from sys.sql_expression_dependencies refs
+        inner join sys.objects obj
+        on refs.referencing_id = obj.object_id
+        inner join sys.schemas sch
+        on obj.schema_id = sch.schema_id
+        where refs.referenced_database_name = 'DWH'
+        and refs.referenced_schema_name = 'gold'
+        and refs.referenced_entity_name = 'gt_fs_orders__dbt_tmp_vw'
+        and refs.referencing_class = 1
+        and obj.type = 'V'
+        
+    OPTION (LABEL = 'dbt-fabric-dw');
+
+      
+[0m04:45:15.829700 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m04:45:15.831839 [debug] [Thread-1 (]: Using fabric connection "model.fabric_warehouse.gt_fs_orders"
+[0m04:45:15.832650 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_orders: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "node_id": "model.fabric_warehouse.gt_fs_orders"} */
+
+      
+      
+    
+    USE [DWH];
+    EXEC('DROP view IF EXISTS "gold"."gt_fs_orders__dbt_tmp_vw";');
+
+[0m04:45:15.878332 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m04:45:15.889955 [debug] [Thread-1 (]: Writing runtime sql for node "model.fabric_warehouse.gt_fs_orders"
+[0m04:45:15.891189 [debug] [Thread-1 (]: Using fabric connection "model.fabric_warehouse.gt_fs_orders"
+[0m04:45:15.891955 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_orders: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "node_id": "model.fabric_warehouse.gt_fs_orders"} */
+
+  
+    
+    
+    USE [DWH];
+    
+    
+
+    EXEC('create view "gold"."gt_fs_orders__dbt_tmp_vw" as 
+
+
+WITH silver_table AS ( 
+
+    SELECT
+        coalesce(cust.sk_fs_customer, -1) sk_fs_customer,
+        coalesce(prod.sk_fs_product, -1) sk_fs_product,
+        coalesce(supp.sk_fs_supplier, -1) sk_fs_supplier,
+        coalesce(cont.sk_fs_continent, -1) sk_fs_continent,
+        coalesce(dt.sk_fs_date, -1) sk_fs_date,
+        orders.OrderID,
+        orders.ProductID,
+        orders.SupplierId,
+        orders.CustomerID,
+        orders.Quantity,
+        orders.UnitPrice,
+        orders.TaxRate,
+        round(cast(orders.Quantity as float) * orders.UnitPrice,2) AS total_revenue,
+        case when orders.TaxRate = 0 then 0
+                else round(cast(orders.Quantity as float) * orders.UnitPrice * cast((orders.TaxRate/100) as float),2)
+        end AS total_tax,
+        round(cast(orders.Quantity as float) * orders.UnitPrice,2) + case when orders.TaxRate = 0 then 0
+                else round(cast(orders.Quantity as float) * orders.UnitPrice * cast((orders.TaxRate/100) as float),2)
+        end as total_revenue_with_tax,
+        LastEditedBy,
+        LastEditedWhen,
+        LastEditedDate,
+        source_updated_at,
+        source_businesskey,
+        source_system,
+        ingestion_date,
+        ingestion_year,
+        ingestion_month,
+        ingestion_day
+    FROM
+    "DWH"."silver"."st_fs_orders" orders
+    left join "DWH"."gold"."gt_fs_customers" cust
+        on orders.CustomerID = cust.dbt_id_business_key
+    left join "DWH"."gold"."gt_fs_products" prod
+        on orders.ProductID = prod.dbt_id_business_key
+    left join "DWH"."gold"."gt_fs_continents" cont
+        on cust.Country = cont.dbt_id_business_key
+    left join "DWH"."silver"."gt_fs_suppliers" supp
+        on orders.SupplierId = supp.dbt_id_business_key
+    ;
+
+eft join "DWH"."gold"."gt_fs_dates" dt
+        on orders.LastEditedDate = dt.sk_fs_date
+
+
+) SELECT 
+    *
+  FROM 
+    silver_table
+
+;');
+
+
+
+
+    
+    
+            EXEC('CREATE TABLE "DWH"."gold"."gt_fs_orders" AS SELECT * FROM "DWH"."gold"."gt_fs_orders__dbt_tmp_vw" 
+    OPTION (LABEL = ''dbt-fabric-dw'');
+');
+        
+
+    
+
+  
+[0m04:45:15.956546 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m04:45:15.962449 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_orders: ROLLBACK
+[0m04:45:15.963257 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_orders: Close
+[0m04:45:15.963950 [error] [Thread-1 (]: [31mUnhandled error while executing target\run\fabric_warehouse\models\gold\fs\gt_fs_orders.sql[0m
+('42000', "[42000] [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]Incorrect syntax near ';'. (102) (SQLMoreResults)")
+[0m04:45:16.086836 [debug] [Thread-1 (]: Traceback (most recent call last):
+  File "D:\Python\dbt_project\venv\Lib\site-packages\dbt\task\base.py", line 363, in safe_run
+    result = self.compile_and_execute(manifest, ctx)
+  File "D:\Python\dbt_project\venv\Lib\site-packages\dbt\task\base.py", line 310, in compile_and_execute
+    result = self.run(ctx.node, manifest)
+  File "D:\Python\dbt_project\venv\Lib\site-packages\dbt\task\base.py", line 410, in run
+    return self.execute(compiled_node, manifest)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\dbt_project\venv\Lib\site-packages\dbt\task\run.py", line 347, in execute
+    return self._execute_model(hook_ctx, context_config, model, context, materialization_macro)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\dbt_project\venv\Lib\site-packages\dbt\task\run.py", line 307, in _execute_model
+    result = MacroGenerator(
+        materialization_macro, context, stack=context["context_macro_stack"]
+    )()
+  File "D:\Python\dbt_project\venv\Lib\site-packages\dbt\clients\jinja.py", line 82, in __call__
+    return self.call_macro(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\Python\dbt_project\venv\Lib\site-packages\dbt_common\clients\jinja.py", line 395, in call_macro
+    return macro(*args, **kwargs)
+  File "D:\Python\dbt_project\venv\Lib\site-packages\jinja2\runtime.py", line 770, in __call__
+    return self._invoke(arguments, autoescape)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\dbt_project\venv\Lib\site-packages\jinja2\runtime.py", line 784, in _invoke
+    rv = self._func(*arguments)
+  File "<template>", line 116, in macro
+  File "D:\Python\dbt_project\venv\Lib\site-packages\jinja2\sandbox.py", line 401, in call
+    return __context.call(__obj, *args, **kwargs)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\dbt_project\venv\Lib\site-packages\jinja2\runtime.py", line 303, in call
+    return __obj(*args, **kwargs)
+  File "D:\Python\dbt_project\venv\Lib\site-packages\dbt\clients\jinja.py", line 82, in __call__
+    return self.call_macro(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\Python\dbt_project\venv\Lib\site-packages\dbt_common\clients\jinja.py", line 395, in call_macro
+    return macro(*args, **kwargs)
+  File "D:\Python\dbt_project\venv\Lib\site-packages\jinja2\runtime.py", line 770, in __call__
+    return self._invoke(arguments, autoescape)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\dbt_project\venv\Lib\site-packages\jinja2\runtime.py", line 784, in _invoke
+    rv = self._func(*arguments)
+  File "<template>", line 52, in macro
+  File "D:\Python\dbt_project\venv\Lib\site-packages\jinja2\sandbox.py", line 401, in call
+    return __context.call(__obj, *args, **kwargs)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\dbt_project\venv\Lib\site-packages\jinja2\runtime.py", line 303, in call
+    return __obj(*args, **kwargs)
+  File "D:\Python\dbt_project\venv\Lib\site-packages\dbt_common\record.py", line 538, in record_replay_wrapper
+    return func_to_record(*call_args, **kwargs)
+  File "D:\Python\dbt_project\venv\Lib\site-packages\dbt\adapters\base\impl.py", line 471, in execute
+    return self.connections.execute(sql=sql, auto_begin=auto_begin, fetch=fetch, limit=limit)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\dbt_project\venv\Lib\site-packages\dbt\adapters\fabric\fabric_connection_manager.py", line 757, in execute
+    while cursor.nextset():
+          ~~~~~~~~~~~~~~^^
+pyodbc.ProgrammingError: ('42000', "[42000] [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]Incorrect syntax near ';'. (102) (SQLMoreResults)")
+
+[0m04:45:16.089497 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'ddb3e07a-8de2-459c-a947-05bf0b78e73c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002189F96A8D0>]}
+[0m04:45:16.090348 [error] [Thread-1 (]: 1 of 1 ERROR creating sql incremental model gold.gt_fs_orders .................. [[31mERROR[0m in 1.74s]
+[0m04:45:16.091644 [debug] [Thread-1 (]: Finished running node model.fabric_warehouse.gt_fs_orders
+[0m04:45:16.092392 [debug] [Thread-7 (]: Marking all children of 'model.fabric_warehouse.gt_fs_orders' to be skipped because of status 'error'.  Reason: ('42000', "[42000] [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]Incorrect syntax near ';'. (102) (SQLMoreResults)").
+[0m04:45:16.095400 [debug] [MainThread]: On master: COMMIT
+[0m04:45:16.096438 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m04:45:16.097027 [debug] [MainThread]: Connection 'list_DWH' was properly closed.
+[0m04:45:16.097378 [debug] [MainThread]: Connection 'list_DWH_silver' was properly closed.
+[0m04:45:16.097706 [debug] [MainThread]: Connection 'list_DWH_gold' was properly closed.
+[0m04:45:16.098040 [debug] [MainThread]: Connection 'model.fabric_warehouse.gt_fs_orders' was properly closed.
+[0m04:45:16.098421 [info ] [MainThread]: 
+[0m04:45:16.099186 [info ] [MainThread]: Finished running 1 incremental model in 0 hours 0 minutes and 4.61 seconds (4.61s).
+[0m04:45:16.100993 [debug] [MainThread]: Command end result
+[0m04:45:16.178018 [debug] [MainThread]: Wrote artifact WritableManifest to D:\Python\dbt_project\dags\warehouse\target\manifest.json
+[0m04:45:16.182907 [debug] [MainThread]: Wrote artifact SemanticManifest to D:\Python\dbt_project\dags\warehouse\target\semantic_manifest.json
+[0m04:45:16.189962 [debug] [MainThread]: Wrote artifact RunExecutionResult to D:\Python\dbt_project\dags\warehouse\target\run_results.json
+[0m04:45:16.190445 [info ] [MainThread]: 
+[0m04:45:16.191401 [info ] [MainThread]: [31mCompleted with 1 error, 0 partial successes, and 0 warnings:[0m
+[0m04:45:16.192315 [info ] [MainThread]: 
+[0m04:45:16.193257 [error] [MainThread]: [31mFailure in model gt_fs_orders (models\gold\fs\gt_fs_orders.sql)[0m
+[0m04:45:16.194323 [error] [MainThread]:   ('42000', "[42000] [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]Incorrect syntax near ';'. (102) (SQLMoreResults)")
+[0m04:45:16.195849 [info ] [MainThread]: 
+[0m04:45:16.197310 [info ] [MainThread]:   compiled code at target\compiled\fabric_warehouse\models\gold\fs\gt_fs_orders.sql
+[0m04:45:16.198364 [info ] [MainThread]: 
+[0m04:45:16.199388 [info ] [MainThread]: Done. PASS=0 WARN=0 ERROR=1 SKIP=0 NO-OP=0 TOTAL=1
+[0m04:45:16.201091 [debug] [MainThread]: Command `dbt run` failed at 04:45:16.200926 after 7.17 seconds
+[0m04:45:16.201560 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002189F6FD020>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002189F992D50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002189F992CB0>]}
+[0m04:45:16.202027 [debug] [MainThread]: Flushing usage events
+[0m04:45:17.070928 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m04:45:17.083080 [info ] [MainThread]: fabric adapter: Skipping warehouse snapshot update: error
+[0m04:46:43.330676 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000212F33F4EC0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000212F5523ED0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000212F55239D0>]}
+
+
+============================== 04:46:43.336250 | 11ee75ea-cb49-4d8b-9831-863364e9e2a6 ==============================
+[0m04:46:43.336250 [info ] [MainThread]: Running with dbt=1.11.7
+[0m04:46:43.337393 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'False', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\salano\\.dbt', 'indirect_selection': 'eager', 'use_colors': 'True', 'invocation_command': 'dbt run --full-refresh --select gt_fs_orders', 'use_experimental_parser': 'False', 'log_path': 'D:\\Python\\dbt_project\\dags\\warehouse\\logs'}
+[0m04:46:43.872418 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '11ee75ea-cb49-4d8b-9831-863364e9e2a6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000212F3890FC0>]}
+[0m04:46:43.963756 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '11ee75ea-cb49-4d8b-9831-863364e9e2a6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000212F5D8D040>]}
+[0m04:46:43.964582 [info ] [MainThread]: Registered adapter: fabric=1.9.8
+[0m04:46:44.367495 [debug] [MainThread]: checksum: b80718358155fc17c3559352095564dd56ada1cc1a1c0ef2e62c857e71583775, vars: {}, profile: , target: , version: 1.11.7
+[0m04:46:44.754899 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 1 files changed.
+[0m04:46:44.755774 [debug] [MainThread]: Partial parsing: updated file: fabric_warehouse://models\gold\fs\gt_fs_orders.sql
+[0m04:46:45.049693 [info ] [MainThread]: 
+            CREATE STATISTICS OrderFactStatistics on "DWH"."silver"."gt_fs_orders" (OrderID) WITH FULLSCAN;
+
+
+[0m04:46:45.199047 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '11ee75ea-cb49-4d8b-9831-863364e9e2a6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000212F631C850>]}
+[0m04:46:45.382293 [debug] [MainThread]: Wrote artifact WritableManifest to D:\Python\dbt_project\dags\warehouse\target\manifest.json
+[0m04:46:45.385464 [debug] [MainThread]: Wrote artifact SemanticManifest to D:\Python\dbt_project\dags\warehouse\target\semantic_manifest.json
+[0m04:46:45.432483 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '11ee75ea-cb49-4d8b-9831-863364e9e2a6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000212F60A4E60>]}
+[0m04:46:45.433223 [info ] [MainThread]: Found 8 models, 4 snapshots, 1 analysis, 71 data tests, 6 sources, 768 macros
+[0m04:46:45.434140 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '11ee75ea-cb49-4d8b-9831-863364e9e2a6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000212F6651E10>]}
+[0m04:46:45.437140 [info ] [MainThread]: 
+[0m04:46:45.437897 [info ] [MainThread]: Concurrency: 4 threads (target='prod')
+[0m04:46:45.438688 [info ] [MainThread]: 
+[0m04:46:45.439770 [debug] [MainThread]: Acquiring new fabric connection 'master'
+[0m04:46:45.441967 [debug] [ThreadPool]: Acquiring new fabric connection 'list_DWH'
+[0m04:46:45.455794 [debug] [ThreadPool]: dbt-fabric
+[0m04:46:45.456347 [debug] [ThreadPool]: Using fabric connection "list_DWH"
+[0m04:46:45.456744 [debug] [ThreadPool]: On list_DWH: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "connection_name": "list_DWH"} */
+USE [DWH];
+    select  name as [schema]
+    from sys.schemas  
+    OPTION (LABEL = 'dbt-fabric-dw');
+
+  
+[0m04:46:45.457178 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m04:46:45.457886 [debug] [ThreadPool]: fabric adapter: Using connection string: DRIVER={ODBC Driver 18 for SQL Server};SERVER=kqs5jtdeedzebgwsqvvke4iowu-aezc4s5igg7udef7qepchtqude.datawarehouse.fabric.microsoft.com;Database=DWH;Pooling=true;SQL_ATTR_TRACE=SQL_OPT_TRACE_OFF;Authentication=ActiveDirectoryServicePrincipal;UID={6fbbf7e4-ec03-4db4-bdfe-74fce58c96bf};PWD=***;encrypt=Yes;TrustServerCertificate=No;APP=dbt-fabric/1.9.8;ConnectRetryCount=3;ConnectRetryInterval=10
+[0m04:46:47.024936 [debug] [ThreadPool]: fabric adapter: Connected to db: DWH
+[0m04:46:47.025578 [warn ] [ThreadPool]: fabric adapter: No workspace_id provided; skipping snapshot management.
+[0m04:46:47.075456 [debug] [ThreadPool]: SQL status: OK in 2.000 seconds
+[0m04:46:47.077792 [debug] [ThreadPool]: On list_DWH: Close
+[0m04:46:47.093297 [debug] [ThreadPool]: Acquiring new fabric connection 'list_DWH_gold'
+[0m04:46:47.105174 [debug] [ThreadPool]: dbt-fabric
+[0m04:46:47.105865 [debug] [ThreadPool]: Acquiring new fabric connection 'list_DWH_silver'
+[0m04:46:47.106416 [debug] [ThreadPool]: Using fabric connection "list_DWH_gold"
+[0m04:46:47.111338 [debug] [ThreadPool]: dbt-fabric
+[0m04:46:47.111957 [debug] [ThreadPool]: On list_DWH_gold: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "connection_name": "list_DWH_gold"} */
+USE [DWH];
+    with base as (
+      select
+        DB_NAME() as [database],
+        t.name as [name],
+        SCHEMA_NAME(t.schema_id) as [schema],
+        'table' as table_type
+      from sys.tables as t 
+      union all
+      select
+        DB_NAME() as [database],
+        v.name as [name],
+        SCHEMA_NAME(v.schema_id) as [schema],
+        'view' as table_type
+      from sys.views as v 
+    )
+    select * from base
+    where [schema] like 'gold'
+    
+    OPTION (LABEL = 'dbt-fabric-dw');
+
+  
+[0m04:46:47.112566 [debug] [ThreadPool]: Using fabric connection "list_DWH_silver"
+[0m04:46:47.113058 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m04:46:47.113595 [debug] [ThreadPool]: On list_DWH_silver: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "connection_name": "list_DWH_silver"} */
+USE [DWH];
+    with base as (
+      select
+        DB_NAME() as [database],
+        t.name as [name],
+        SCHEMA_NAME(t.schema_id) as [schema],
+        'table' as table_type
+      from sys.tables as t 
+      union all
+      select
+        DB_NAME() as [database],
+        v.name as [name],
+        SCHEMA_NAME(v.schema_id) as [schema],
+        'view' as table_type
+      from sys.views as v 
+    )
+    select * from base
+    where [schema] like 'silver'
+    
+    OPTION (LABEL = 'dbt-fabric-dw');
+
+  
+[0m04:46:47.114217 [debug] [ThreadPool]: fabric adapter: Using connection string: DRIVER={ODBC Driver 18 for SQL Server};SERVER=kqs5jtdeedzebgwsqvvke4iowu-aezc4s5igg7udef7qepchtqude.datawarehouse.fabric.microsoft.com;Database=DWH;Pooling=true;SQL_ATTR_TRACE=SQL_OPT_TRACE_OFF;Authentication=ActiveDirectoryServicePrincipal;UID={6fbbf7e4-ec03-4db4-bdfe-74fce58c96bf};PWD=***;encrypt=Yes;TrustServerCertificate=No;APP=dbt-fabric/1.9.8;ConnectRetryCount=3;ConnectRetryInterval=10
+[0m04:46:47.114898 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m04:46:47.115540 [debug] [ThreadPool]: fabric adapter: Using connection string: DRIVER={ODBC Driver 18 for SQL Server};SERVER=kqs5jtdeedzebgwsqvvke4iowu-aezc4s5igg7udef7qepchtqude.datawarehouse.fabric.microsoft.com;Database=DWH;Pooling=true;SQL_ATTR_TRACE=SQL_OPT_TRACE_OFF;Authentication=ActiveDirectoryServicePrincipal;UID={6fbbf7e4-ec03-4db4-bdfe-74fce58c96bf};PWD=***;encrypt=Yes;TrustServerCertificate=No;APP=dbt-fabric/1.9.8;ConnectRetryCount=3;ConnectRetryInterval=10
+[0m04:46:47.116095 [debug] [ThreadPool]: fabric adapter: Connected to db: DWH
+[0m04:46:47.177220 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m04:46:47.178976 [debug] [ThreadPool]: On list_DWH_silver: ROLLBACK
+[0m04:46:47.179348 [debug] [ThreadPool]: On list_DWH_silver: Close
+[0m04:46:47.988956 [debug] [ThreadPool]: fabric adapter: Connected to db: DWH
+[0m04:46:48.058167 [debug] [ThreadPool]: SQL status: OK in 1.000 seconds
+[0m04:46:48.059974 [debug] [ThreadPool]: On list_DWH_gold: ROLLBACK
+[0m04:46:48.060388 [debug] [ThreadPool]: On list_DWH_gold: Close
+[0m04:46:48.062450 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '11ee75ea-cb49-4d8b-9831-863364e9e2a6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000212F6808E20>]}
+[0m04:46:48.063008 [debug] [MainThread]: On master: COMMIT
+[0m04:46:48.069270 [debug] [Thread-1 (]: Began running node model.fabric_warehouse.gt_fs_orders
+[0m04:46:48.069941 [info ] [Thread-1 (]: 1 of 1 START sql incremental model gold.gt_fs_orders ........................... [RUN]
+[0m04:46:48.071102 [debug] [Thread-1 (]: Acquiring new fabric connection 'model.fabric_warehouse.gt_fs_orders'
+[0m04:46:48.071553 [debug] [Thread-1 (]: Began compiling node model.fabric_warehouse.gt_fs_orders
+[0m04:46:48.083955 [debug] [Thread-1 (]: Writing injected SQL for node "model.fabric_warehouse.gt_fs_orders"
+[0m04:46:48.085080 [debug] [Thread-1 (]: Began executing node model.fabric_warehouse.gt_fs_orders
+[0m04:46:48.133710 [debug] [Thread-1 (]: Applying DROP to: "DWH"."gold"."gt_fs_orders__dbt_tmp_vw"
+[0m04:46:48.143460 [debug] [Thread-1 (]: dbt-fabric
+[0m04:46:48.145175 [debug] [Thread-1 (]: Using fabric connection "model.fabric_warehouse.gt_fs_orders"
+[0m04:46:48.145700 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_orders: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "node_id": "model.fabric_warehouse.gt_fs_orders"} */
+
+        USE [DWH];
+        select
+            sch.name as schema_name,
+            obj.name as view_name
+        from sys.sql_expression_dependencies refs
+        inner join sys.objects obj
+        on refs.referencing_id = obj.object_id
+        inner join sys.schemas sch
+        on obj.schema_id = sch.schema_id
+        where refs.referenced_database_name = 'DWH'
+        and refs.referenced_schema_name = 'gold'
+        and refs.referenced_entity_name = 'gt_fs_orders__dbt_tmp_vw'
+        and refs.referencing_class = 1
+        and obj.type = 'V'
+        
+    OPTION (LABEL = 'dbt-fabric-dw');
+
+      
+[0m04:46:48.146165 [debug] [Thread-1 (]: Opening a new connection, currently in state init
+[0m04:46:48.146778 [debug] [Thread-1 (]: fabric adapter: Using connection string: DRIVER={ODBC Driver 18 for SQL Server};SERVER=kqs5jtdeedzebgwsqvvke4iowu-aezc4s5igg7udef7qepchtqude.datawarehouse.fabric.microsoft.com;Database=DWH;Pooling=true;SQL_ATTR_TRACE=SQL_OPT_TRACE_OFF;Authentication=ActiveDirectoryServicePrincipal;UID={6fbbf7e4-ec03-4db4-bdfe-74fce58c96bf};PWD=***;encrypt=Yes;TrustServerCertificate=No;APP=dbt-fabric/1.9.8;ConnectRetryCount=3;ConnectRetryInterval=10
+[0m04:46:48.147488 [debug] [Thread-1 (]: fabric adapter: Connected to db: DWH
+[0m04:46:48.197288 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m04:46:48.199145 [debug] [Thread-1 (]: Using fabric connection "model.fabric_warehouse.gt_fs_orders"
+[0m04:46:48.199613 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_orders: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "node_id": "model.fabric_warehouse.gt_fs_orders"} */
+
+      
+      
+    
+    USE [DWH];
+    EXEC('DROP view IF EXISTS "gold"."gt_fs_orders__dbt_tmp_vw";');
+
+[0m04:46:48.241765 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m04:46:48.245249 [debug] [Thread-1 (]: Applying DROP to: "DWH"."gold"."gt_fs_orders"
+[0m04:46:48.245969 [debug] [Thread-1 (]: Using fabric connection "model.fabric_warehouse.gt_fs_orders"
+[0m04:46:48.246426 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_orders: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "node_id": "model.fabric_warehouse.gt_fs_orders"} */
+
+      
+    USE [DWH];
+    EXEC('DROP table IF EXISTS "gold"."gt_fs_orders";');
+
+[0m04:46:48.303463 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m04:46:48.319166 [debug] [Thread-1 (]: dbt-fabric
+[0m04:46:48.321896 [debug] [Thread-1 (]: Applying DROP to: "DWH"."gold"."gt_fs_orders__dbt_tmp_vw"
+[0m04:46:48.322593 [debug] [Thread-1 (]: dbt-fabric
+[0m04:46:48.323176 [debug] [Thread-1 (]: Using fabric connection "model.fabric_warehouse.gt_fs_orders"
+[0m04:46:48.323665 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_orders: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "node_id": "model.fabric_warehouse.gt_fs_orders"} */
+
+        USE [DWH];
+        select
+            sch.name as schema_name,
+            obj.name as view_name
+        from sys.sql_expression_dependencies refs
+        inner join sys.objects obj
+        on refs.referencing_id = obj.object_id
+        inner join sys.schemas sch
+        on obj.schema_id = sch.schema_id
+        where refs.referenced_database_name = 'DWH'
+        and refs.referenced_schema_name = 'gold'
+        and refs.referenced_entity_name = 'gt_fs_orders__dbt_tmp_vw'
+        and refs.referencing_class = 1
+        and obj.type = 'V'
+        
+    OPTION (LABEL = 'dbt-fabric-dw');
+
+      
+[0m04:46:48.379731 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m04:46:48.381545 [debug] [Thread-1 (]: Using fabric connection "model.fabric_warehouse.gt_fs_orders"
+[0m04:46:48.382019 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_orders: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "node_id": "model.fabric_warehouse.gt_fs_orders"} */
+
+      
+      
+    
+    USE [DWH];
+    EXEC('DROP view IF EXISTS "gold"."gt_fs_orders__dbt_tmp_vw";');
+
+[0m04:46:48.434601 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m04:46:48.447248 [debug] [Thread-1 (]: Writing runtime sql for node "model.fabric_warehouse.gt_fs_orders"
+[0m04:46:48.448486 [debug] [Thread-1 (]: Using fabric connection "model.fabric_warehouse.gt_fs_orders"
+[0m04:46:48.449127 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_orders: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "node_id": "model.fabric_warehouse.gt_fs_orders"} */
+
+  
+    
+    
+    USE [DWH];
+    
+    
+
+    EXEC('create view "gold"."gt_fs_orders__dbt_tmp_vw" as 
+
+
+WITH silver_table AS ( 
+
+    SELECT
+        coalesce(cust.sk_fs_customer, -1) sk_fs_customer,
+        coalesce(prod.sk_fs_product, -1) sk_fs_product,
+        coalesce(supp.sk_fs_supplier, -1) sk_fs_supplier,
+        coalesce(cont.sk_fs_continent, -1) sk_fs_continent,
+        coalesce(dt.sk_fs_date, -1) sk_fs_date,
+        orders.OrderID,
+        orders.ProductID,
+        orders.SupplierId,
+        orders.CustomerID,
+        orders.Quantity,
+        orders.UnitPrice,
+        orders.TaxRate,
+        round(cast(orders.Quantity as float) * orders.UnitPrice,2) AS total_revenue,
+        case when orders.TaxRate = 0 then 0
+                else round(cast(orders.Quantity as float) * orders.UnitPrice * cast((orders.TaxRate/100) as float),2)
+        end AS total_tax,
+        round(cast(orders.Quantity as float) * orders.UnitPrice,2) + case when orders.TaxRate = 0 then 0
+                else round(cast(orders.Quantity as float) * orders.UnitPrice * cast((orders.TaxRate/100) as float),2)
+        end as total_revenue_with_tax,
+        LastEditedBy,
+        LastEditedWhen,
+        LastEditedDate,
+        source_updated_at,
+        source_businesskey,
+        source_system,
+        ingestion_date,
+        ingestion_year,
+        ingestion_month,
+        ingestion_day
+    FROM
+    "DWH"."silver"."st_fs_orders" orders
+    left join "DWH"."gold"."gt_fs_customers" cust
+        on orders.CustomerID = cust.dbt_id_business_key
+    left join "DWH"."gold"."gt_fs_products" prod
+        on orders.ProductID = prod.dbt_id_business_key
+    left join "DWH"."gold"."gt_fs_continents" cont
+        on cust.Country = cont.dbt_id_business_key
+    left join "DWH"."silver"."gt_fs_suppliers" supp
+        on orders.SupplierId = supp.dbt_id_business_key
+    left join "DWH"."gold"."gt_fs_dates" dt
+        on orders.LastEditedDate = dt.sk_fs_date
+
+
+) SELECT 
+    *
+  FROM 
+    silver_table
+
+;');
+
+
+
+
+    
+    
+            EXEC('CREATE TABLE "DWH"."gold"."gt_fs_orders" AS SELECT * FROM "DWH"."gold"."gt_fs_orders__dbt_tmp_vw" 
+    OPTION (LABEL = ''dbt-fabric-dw'');
+');
+        
+
+    
+
+  
+[0m04:46:48.498433 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m04:46:48.499647 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_orders: ROLLBACK
+[0m04:46:48.500070 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_orders: Close
+[0m04:46:48.500633 [error] [Thread-1 (]: [31mUnhandled error while executing target\run\fabric_warehouse\models\gold\fs\gt_fs_orders.sql[0m
+('22018', '[22018] [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]Operand type clash: int is incompatible with date (206) (SQLMoreResults)')
+[0m04:46:48.508991 [debug] [Thread-1 (]: Traceback (most recent call last):
+  File "D:\Python\dbt_project\venv\Lib\site-packages\dbt\task\base.py", line 363, in safe_run
+    result = self.compile_and_execute(manifest, ctx)
+  File "D:\Python\dbt_project\venv\Lib\site-packages\dbt\task\base.py", line 310, in compile_and_execute
+    result = self.run(ctx.node, manifest)
+  File "D:\Python\dbt_project\venv\Lib\site-packages\dbt\task\base.py", line 410, in run
+    return self.execute(compiled_node, manifest)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\dbt_project\venv\Lib\site-packages\dbt\task\run.py", line 347, in execute
+    return self._execute_model(hook_ctx, context_config, model, context, materialization_macro)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\dbt_project\venv\Lib\site-packages\dbt\task\run.py", line 307, in _execute_model
+    result = MacroGenerator(
+        materialization_macro, context, stack=context["context_macro_stack"]
+    )()
+  File "D:\Python\dbt_project\venv\Lib\site-packages\dbt\clients\jinja.py", line 82, in __call__
+    return self.call_macro(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\Python\dbt_project\venv\Lib\site-packages\dbt_common\clients\jinja.py", line 395, in call_macro
+    return macro(*args, **kwargs)
+  File "D:\Python\dbt_project\venv\Lib\site-packages\jinja2\runtime.py", line 770, in __call__
+    return self._invoke(arguments, autoescape)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\dbt_project\venv\Lib\site-packages\jinja2\runtime.py", line 784, in _invoke
+    rv = self._func(*arguments)
+  File "<template>", line 116, in macro
+  File "D:\Python\dbt_project\venv\Lib\site-packages\jinja2\sandbox.py", line 401, in call
+    return __context.call(__obj, *args, **kwargs)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\dbt_project\venv\Lib\site-packages\jinja2\runtime.py", line 303, in call
+    return __obj(*args, **kwargs)
+  File "D:\Python\dbt_project\venv\Lib\site-packages\dbt\clients\jinja.py", line 82, in __call__
+    return self.call_macro(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\Python\dbt_project\venv\Lib\site-packages\dbt_common\clients\jinja.py", line 395, in call_macro
+    return macro(*args, **kwargs)
+  File "D:\Python\dbt_project\venv\Lib\site-packages\jinja2\runtime.py", line 770, in __call__
+    return self._invoke(arguments, autoescape)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\dbt_project\venv\Lib\site-packages\jinja2\runtime.py", line 784, in _invoke
+    rv = self._func(*arguments)
+  File "<template>", line 52, in macro
+  File "D:\Python\dbt_project\venv\Lib\site-packages\jinja2\sandbox.py", line 401, in call
+    return __context.call(__obj, *args, **kwargs)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\dbt_project\venv\Lib\site-packages\jinja2\runtime.py", line 303, in call
+    return __obj(*args, **kwargs)
+  File "D:\Python\dbt_project\venv\Lib\site-packages\dbt_common\record.py", line 538, in record_replay_wrapper
+    return func_to_record(*call_args, **kwargs)
+  File "D:\Python\dbt_project\venv\Lib\site-packages\dbt\adapters\base\impl.py", line 471, in execute
+    return self.connections.execute(sql=sql, auto_begin=auto_begin, fetch=fetch, limit=limit)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\dbt_project\venv\Lib\site-packages\dbt\adapters\fabric\fabric_connection_manager.py", line 757, in execute
+    while cursor.nextset():
+          ~~~~~~~~~~~~~~^^
+pyodbc.DataError: ('22018', '[22018] [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]Operand type clash: int is incompatible with date (206) (SQLMoreResults)')
+
+[0m04:46:48.512924 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '11ee75ea-cb49-4d8b-9831-863364e9e2a6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000212F66C2B10>]}
+[0m04:46:48.514294 [error] [Thread-1 (]: 1 of 1 ERROR creating sql incremental model gold.gt_fs_orders .................. [[31mERROR[0m in 0.44s]
+[0m04:46:48.516100 [debug] [Thread-1 (]: Finished running node model.fabric_warehouse.gt_fs_orders
+[0m04:46:48.517900 [debug] [Thread-7 (]: Marking all children of 'model.fabric_warehouse.gt_fs_orders' to be skipped because of status 'error'.  Reason: ('22018', '[22018] [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]Operand type clash: int is incompatible with date (206) (SQLMoreResults)').
+[0m04:46:48.521578 [debug] [MainThread]: On master: COMMIT
+[0m04:46:48.522186 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m04:46:48.522539 [debug] [MainThread]: Connection 'list_DWH' was properly closed.
+[0m04:46:48.522909 [debug] [MainThread]: Connection 'list_DWH_gold' was properly closed.
+[0m04:46:48.523433 [debug] [MainThread]: Connection 'list_DWH_silver' was properly closed.
+[0m04:46:48.523969 [debug] [MainThread]: Connection 'model.fabric_warehouse.gt_fs_orders' was properly closed.
+[0m04:46:48.524966 [info ] [MainThread]: 
+[0m04:46:48.526365 [info ] [MainThread]: Finished running 1 incremental model in 0 hours 0 minutes and 3.09 seconds (3.09s).
+[0m04:46:48.528305 [debug] [MainThread]: Command end result
+[0m04:46:48.600803 [debug] [MainThread]: Wrote artifact WritableManifest to D:\Python\dbt_project\dags\warehouse\target\manifest.json
+[0m04:46:48.604005 [debug] [MainThread]: Wrote artifact SemanticManifest to D:\Python\dbt_project\dags\warehouse\target\semantic_manifest.json
+[0m04:46:48.613028 [debug] [MainThread]: Wrote artifact RunExecutionResult to D:\Python\dbt_project\dags\warehouse\target\run_results.json
+[0m04:46:48.613531 [info ] [MainThread]: 
+[0m04:46:48.614527 [info ] [MainThread]: [31mCompleted with 1 error, 0 partial successes, and 0 warnings:[0m
+[0m04:46:48.615422 [info ] [MainThread]: 
+[0m04:46:48.616338 [error] [MainThread]: [31mFailure in model gt_fs_orders (models\gold\fs\gt_fs_orders.sql)[0m
+[0m04:46:48.617296 [error] [MainThread]:   ('22018', '[22018] [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]Operand type clash: int is incompatible with date (206) (SQLMoreResults)')
+[0m04:46:48.618076 [info ] [MainThread]: 
+[0m04:46:48.618967 [info ] [MainThread]:   compiled code at target\compiled\fabric_warehouse\models\gold\fs\gt_fs_orders.sql
+[0m04:46:48.619634 [info ] [MainThread]: 
+[0m04:46:48.620731 [info ] [MainThread]: Done. PASS=0 WARN=0 ERROR=1 SKIP=0 NO-OP=0 TOTAL=1
+[0m04:46:48.623415 [debug] [MainThread]: Command `dbt run` failed at 04:46:48.623006 after 5.56 seconds
+[0m04:46:48.624912 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000212F6581020>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000212F66DED50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000212F66DECB0>]}
+[0m04:46:48.626463 [debug] [MainThread]: Flushing usage events
+[0m04:46:49.475837 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m04:46:49.486437 [info ] [MainThread]: fabric adapter: Skipping warehouse snapshot update: error
+[0m04:49:20.445558 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F221494EC0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F2235C3ED0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F2235C39D0>]}
+
+
+============================== 04:49:20.451261 | d7ca536f-a9a7-4d4b-9d9f-06c85ae1e89e ==============================
+[0m04:49:20.451261 [info ] [MainThread]: Running with dbt=1.11.7
+[0m04:49:20.452240 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'empty': 'False', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\salano\\.dbt', 'indirect_selection': 'eager', 'invocation_command': 'dbt run --full-refresh --select gt_fs_orders', 'use_colors': 'True', 'use_experimental_parser': 'False', 'log_path': 'D:\\Python\\dbt_project\\dags\\warehouse\\logs'}
+[0m04:49:21.010587 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'd7ca536f-a9a7-4d4b-9d9f-06c85ae1e89e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F221930FC0>]}
+[0m04:49:21.100041 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'd7ca536f-a9a7-4d4b-9d9f-06c85ae1e89e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F223D5D040>]}
+[0m04:49:21.100852 [info ] [MainThread]: Registered adapter: fabric=1.9.8
+[0m04:49:21.486179 [debug] [MainThread]: checksum: b80718358155fc17c3559352095564dd56ada1cc1a1c0ef2e62c857e71583775, vars: {}, profile: , target: , version: 1.11.7
+[0m04:49:21.860974 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 1 files changed.
+[0m04:49:21.861935 [debug] [MainThread]: Partial parsing: updated file: fabric_warehouse://models\gold\fs\gt_fs_orders.sql
+[0m04:49:22.145142 [info ] [MainThread]: 
+            CREATE STATISTICS OrderFactStatistics on "DWH"."silver"."gt_fs_orders" (OrderID) WITH FULLSCAN;
+
+
+[0m04:49:22.296121 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'd7ca536f-a9a7-4d4b-9d9f-06c85ae1e89e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F2242EC850>]}
+[0m04:49:22.484361 [debug] [MainThread]: Wrote artifact WritableManifest to D:\Python\dbt_project\dags\warehouse\target\manifest.json
+[0m04:49:22.488566 [debug] [MainThread]: Wrote artifact SemanticManifest to D:\Python\dbt_project\dags\warehouse\target\semantic_manifest.json
+[0m04:49:22.533383 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'd7ca536f-a9a7-4d4b-9d9f-06c85ae1e89e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F22402CE60>]}
+[0m04:49:22.533983 [info ] [MainThread]: Found 8 models, 4 snapshots, 1 analysis, 71 data tests, 6 sources, 768 macros
+[0m04:49:22.535108 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'd7ca536f-a9a7-4d4b-9d9f-06c85ae1e89e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F22461DE10>]}
+[0m04:49:22.538742 [info ] [MainThread]: 
+[0m04:49:22.539614 [info ] [MainThread]: Concurrency: 4 threads (target='prod')
+[0m04:49:22.540391 [info ] [MainThread]: 
+[0m04:49:22.541692 [debug] [MainThread]: Acquiring new fabric connection 'master'
+[0m04:49:22.543657 [debug] [ThreadPool]: Acquiring new fabric connection 'list_DWH'
+[0m04:49:22.561940 [debug] [ThreadPool]: dbt-fabric
+[0m04:49:22.562533 [debug] [ThreadPool]: Using fabric connection "list_DWH"
+[0m04:49:22.562927 [debug] [ThreadPool]: On list_DWH: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "connection_name": "list_DWH"} */
+USE [DWH];
+    select  name as [schema]
+    from sys.schemas  
+    OPTION (LABEL = 'dbt-fabric-dw');
+
+  
+[0m04:49:22.563315 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m04:49:22.563747 [debug] [ThreadPool]: fabric adapter: Using connection string: DRIVER={ODBC Driver 18 for SQL Server};SERVER=kqs5jtdeedzebgwsqvvke4iowu-aezc4s5igg7udef7qepchtqude.datawarehouse.fabric.microsoft.com;Database=DWH;Pooling=true;SQL_ATTR_TRACE=SQL_OPT_TRACE_OFF;Authentication=ActiveDirectoryServicePrincipal;UID={6fbbf7e4-ec03-4db4-bdfe-74fce58c96bf};PWD=***;encrypt=Yes;TrustServerCertificate=No;APP=dbt-fabric/1.9.8;ConnectRetryCount=3;ConnectRetryInterval=10
+[0m04:49:24.078696 [debug] [ThreadPool]: fabric adapter: Connected to db: DWH
+[0m04:49:24.079265 [warn ] [ThreadPool]: fabric adapter: No workspace_id provided; skipping snapshot management.
+[0m04:49:24.132646 [debug] [ThreadPool]: SQL status: OK in 2.000 seconds
+[0m04:49:24.134322 [debug] [ThreadPool]: On list_DWH: Close
+[0m04:49:24.143499 [debug] [ThreadPool]: Acquiring new fabric connection 'list_DWH_silver'
+[0m04:49:24.153954 [debug] [ThreadPool]: dbt-fabric
+[0m04:49:24.155521 [debug] [ThreadPool]: Acquiring new fabric connection 'list_DWH_gold'
+[0m04:49:24.156569 [debug] [ThreadPool]: Using fabric connection "list_DWH_silver"
+[0m04:49:24.161264 [debug] [ThreadPool]: dbt-fabric
+[0m04:49:24.162145 [debug] [ThreadPool]: On list_DWH_silver: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "connection_name": "list_DWH_silver"} */
+USE [DWH];
+    with base as (
+      select
+        DB_NAME() as [database],
+        t.name as [name],
+        SCHEMA_NAME(t.schema_id) as [schema],
+        'table' as table_type
+      from sys.tables as t 
+      union all
+      select
+        DB_NAME() as [database],
+        v.name as [name],
+        SCHEMA_NAME(v.schema_id) as [schema],
+        'view' as table_type
+      from sys.views as v 
+    )
+    select * from base
+    where [schema] like 'silver'
+    
+    OPTION (LABEL = 'dbt-fabric-dw');
+
+  
+[0m04:49:24.162834 [debug] [ThreadPool]: Using fabric connection "list_DWH_gold"
+[0m04:49:24.163509 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m04:49:24.164061 [debug] [ThreadPool]: On list_DWH_gold: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "connection_name": "list_DWH_gold"} */
+USE [DWH];
+    with base as (
+      select
+        DB_NAME() as [database],
+        t.name as [name],
+        SCHEMA_NAME(t.schema_id) as [schema],
+        'table' as table_type
+      from sys.tables as t 
+      union all
+      select
+        DB_NAME() as [database],
+        v.name as [name],
+        SCHEMA_NAME(v.schema_id) as [schema],
+        'view' as table_type
+      from sys.views as v 
+    )
+    select * from base
+    where [schema] like 'gold'
+    
+    OPTION (LABEL = 'dbt-fabric-dw');
+
+  
+[0m04:49:24.164822 [debug] [ThreadPool]: fabric adapter: Using connection string: DRIVER={ODBC Driver 18 for SQL Server};SERVER=kqs5jtdeedzebgwsqvvke4iowu-aezc4s5igg7udef7qepchtqude.datawarehouse.fabric.microsoft.com;Database=DWH;Pooling=true;SQL_ATTR_TRACE=SQL_OPT_TRACE_OFF;Authentication=ActiveDirectoryServicePrincipal;UID={6fbbf7e4-ec03-4db4-bdfe-74fce58c96bf};PWD=***;encrypt=Yes;TrustServerCertificate=No;APP=dbt-fabric/1.9.8;ConnectRetryCount=3;ConnectRetryInterval=10
+[0m04:49:24.165307 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m04:49:24.166239 [debug] [ThreadPool]: fabric adapter: Using connection string: DRIVER={ODBC Driver 18 for SQL Server};SERVER=kqs5jtdeedzebgwsqvvke4iowu-aezc4s5igg7udef7qepchtqude.datawarehouse.fabric.microsoft.com;Database=DWH;Pooling=true;SQL_ATTR_TRACE=SQL_OPT_TRACE_OFF;Authentication=ActiveDirectoryServicePrincipal;UID={6fbbf7e4-ec03-4db4-bdfe-74fce58c96bf};PWD=***;encrypt=Yes;TrustServerCertificate=No;APP=dbt-fabric/1.9.8;ConnectRetryCount=3;ConnectRetryInterval=10
+[0m04:49:24.167255 [debug] [ThreadPool]: fabric adapter: Connected to db: DWH
+[0m04:49:24.236818 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m04:49:24.239576 [debug] [ThreadPool]: On list_DWH_gold: ROLLBACK
+[0m04:49:24.240519 [debug] [ThreadPool]: On list_DWH_gold: Close
+[0m04:49:25.126345 [debug] [ThreadPool]: fabric adapter: Connected to db: DWH
+[0m04:49:25.177271 [debug] [ThreadPool]: SQL status: OK in 1.000 seconds
+[0m04:49:25.178936 [debug] [ThreadPool]: On list_DWH_silver: ROLLBACK
+[0m04:49:25.179306 [debug] [ThreadPool]: On list_DWH_silver: Close
+[0m04:49:25.181966 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'd7ca536f-a9a7-4d4b-9d9f-06c85ae1e89e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F2247C8E20>]}
+[0m04:49:25.182477 [debug] [MainThread]: On master: COMMIT
+[0m04:49:25.189764 [debug] [Thread-1 (]: Began running node model.fabric_warehouse.gt_fs_orders
+[0m04:49:25.191048 [info ] [Thread-1 (]: 1 of 1 START sql incremental model gold.gt_fs_orders ........................... [RUN]
+[0m04:49:25.192657 [debug] [Thread-1 (]: Acquiring new fabric connection 'model.fabric_warehouse.gt_fs_orders'
+[0m04:49:25.193164 [debug] [Thread-1 (]: Began compiling node model.fabric_warehouse.gt_fs_orders
+[0m04:49:25.204812 [debug] [Thread-1 (]: Writing injected SQL for node "model.fabric_warehouse.gt_fs_orders"
+[0m04:49:25.205878 [debug] [Thread-1 (]: Began executing node model.fabric_warehouse.gt_fs_orders
+[0m04:49:25.254256 [debug] [Thread-1 (]: Applying DROP to: "DWH"."gold"."gt_fs_orders__dbt_tmp_vw"
+[0m04:49:25.263085 [debug] [Thread-1 (]: dbt-fabric
+[0m04:49:25.264777 [debug] [Thread-1 (]: Using fabric connection "model.fabric_warehouse.gt_fs_orders"
+[0m04:49:25.265273 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_orders: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "node_id": "model.fabric_warehouse.gt_fs_orders"} */
+
+        USE [DWH];
+        select
+            sch.name as schema_name,
+            obj.name as view_name
+        from sys.sql_expression_dependencies refs
+        inner join sys.objects obj
+        on refs.referencing_id = obj.object_id
+        inner join sys.schemas sch
+        on obj.schema_id = sch.schema_id
+        where refs.referenced_database_name = 'DWH'
+        and refs.referenced_schema_name = 'gold'
+        and refs.referenced_entity_name = 'gt_fs_orders__dbt_tmp_vw'
+        and refs.referencing_class = 1
+        and obj.type = 'V'
+        
+    OPTION (LABEL = 'dbt-fabric-dw');
+
+      
+[0m04:49:25.265738 [debug] [Thread-1 (]: Opening a new connection, currently in state init
+[0m04:49:25.266311 [debug] [Thread-1 (]: fabric adapter: Using connection string: DRIVER={ODBC Driver 18 for SQL Server};SERVER=kqs5jtdeedzebgwsqvvke4iowu-aezc4s5igg7udef7qepchtqude.datawarehouse.fabric.microsoft.com;Database=DWH;Pooling=true;SQL_ATTR_TRACE=SQL_OPT_TRACE_OFF;Authentication=ActiveDirectoryServicePrincipal;UID={6fbbf7e4-ec03-4db4-bdfe-74fce58c96bf};PWD=***;encrypt=Yes;TrustServerCertificate=No;APP=dbt-fabric/1.9.8;ConnectRetryCount=3;ConnectRetryInterval=10
+[0m04:49:25.267003 [debug] [Thread-1 (]: fabric adapter: Connected to db: DWH
+[0m04:49:25.318206 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m04:49:25.320131 [debug] [Thread-1 (]: Using fabric connection "model.fabric_warehouse.gt_fs_orders"
+[0m04:49:25.321001 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_orders: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "node_id": "model.fabric_warehouse.gt_fs_orders"} */
+
+      
+      
+    
+    USE [DWH];
+    EXEC('DROP view IF EXISTS "gold"."gt_fs_orders__dbt_tmp_vw";');
+
+[0m04:49:25.366778 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m04:49:25.371470 [debug] [Thread-1 (]: Applying DROP to: "DWH"."gold"."gt_fs_orders"
+[0m04:49:25.372650 [debug] [Thread-1 (]: Using fabric connection "model.fabric_warehouse.gt_fs_orders"
+[0m04:49:25.373376 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_orders: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "node_id": "model.fabric_warehouse.gt_fs_orders"} */
+
+      
+    USE [DWH];
+    EXEC('DROP table IF EXISTS "gold"."gt_fs_orders";');
+
+[0m04:49:25.418681 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m04:49:25.436312 [debug] [Thread-1 (]: dbt-fabric
+[0m04:49:25.440129 [debug] [Thread-1 (]: Applying DROP to: "DWH"."gold"."gt_fs_orders__dbt_tmp_vw"
+[0m04:49:25.440960 [debug] [Thread-1 (]: dbt-fabric
+[0m04:49:25.441463 [debug] [Thread-1 (]: Using fabric connection "model.fabric_warehouse.gt_fs_orders"
+[0m04:49:25.441935 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_orders: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "node_id": "model.fabric_warehouse.gt_fs_orders"} */
+
+        USE [DWH];
+        select
+            sch.name as schema_name,
+            obj.name as view_name
+        from sys.sql_expression_dependencies refs
+        inner join sys.objects obj
+        on refs.referencing_id = obj.object_id
+        inner join sys.schemas sch
+        on obj.schema_id = sch.schema_id
+        where refs.referenced_database_name = 'DWH'
+        and refs.referenced_schema_name = 'gold'
+        and refs.referenced_entity_name = 'gt_fs_orders__dbt_tmp_vw'
+        and refs.referencing_class = 1
+        and obj.type = 'V'
+        
+    OPTION (LABEL = 'dbt-fabric-dw');
+
+      
+[0m04:49:25.487818 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m04:49:25.489769 [debug] [Thread-1 (]: Using fabric connection "model.fabric_warehouse.gt_fs_orders"
+[0m04:49:25.490250 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_orders: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "node_id": "model.fabric_warehouse.gt_fs_orders"} */
+
+      
+      
+    
+    USE [DWH];
+    EXEC('DROP view IF EXISTS "gold"."gt_fs_orders__dbt_tmp_vw";');
+
+[0m04:49:25.539176 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m04:49:25.549321 [debug] [Thread-1 (]: Writing runtime sql for node "model.fabric_warehouse.gt_fs_orders"
+[0m04:49:25.550482 [debug] [Thread-1 (]: Using fabric connection "model.fabric_warehouse.gt_fs_orders"
+[0m04:49:25.551093 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_orders: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "node_id": "model.fabric_warehouse.gt_fs_orders"} */
+
+  
+    
+    
+    USE [DWH];
+    
+    
+
+    EXEC('create view "gold"."gt_fs_orders__dbt_tmp_vw" as 
+
+
+WITH silver_table AS ( 
+
+    SELECT
+        coalesce(cust.sk_fs_customer, -1) sk_fs_customer,
+        coalesce(prod.sk_fs_product, -1) sk_fs_product,
+        coalesce(supp.sk_fs_supplier, -1) sk_fs_supplier,
+        coalesce(cont.sk_fs_continent, -1) sk_fs_continent,
+        coalesce(dt.sk_fs_date, CAST(''1900-01-01'' AS DATE)) sk_fs_date,
+        orders.OrderID,
+        orders.ProductID,
+        orders.SupplierId,
+        orders.CustomerID,
+        orders.Quantity,
+        orders.UnitPrice,
+        orders.TaxRate,
+        round(cast(orders.Quantity as float) * orders.UnitPrice,2) AS total_revenue,
+        case when orders.TaxRate = 0 then 0
+                else round(cast(orders.Quantity as float) * orders.UnitPrice * cast((orders.TaxRate/100) as float),2)
+        end AS total_tax,
+        round(cast(orders.Quantity as float) * orders.UnitPrice,2) + case when orders.TaxRate = 0 then 0
+                else round(cast(orders.Quantity as float) * orders.UnitPrice * cast((orders.TaxRate/100) as float),2)
+        end as total_revenue_with_tax,
+        LastEditedBy,
+        LastEditedWhen,
+        LastEditedDate,
+        source_updated_at,
+        source_businesskey,
+        source_system,
+        ingestion_date,
+        ingestion_year,
+        ingestion_month,
+        ingestion_day
+    FROM
+    "DWH"."silver"."st_fs_orders" orders
+    left join "DWH"."gold"."gt_fs_customers" cust
+        on orders.CustomerID = cust.dbt_id_business_key
+    left join "DWH"."gold"."gt_fs_products" prod
+        on orders.ProductID = prod.dbt_id_business_key
+    left join "DWH"."gold"."gt_fs_continents" cont
+        on cust.Country = cont.dbt_id_business_key
+    left join "DWH"."silver"."gt_fs_suppliers" supp
+        on orders.SupplierId = supp.dbt_id_business_key
+    left join "DWH"."gold"."gt_fs_dates" dt
+        on orders.LastEditedDate = dt.sk_fs_date
+
+
+) SELECT 
+    *
+  FROM 
+    silver_table
+
+;');
+
+
+
+
+    
+    
+            EXEC('CREATE TABLE "DWH"."gold"."gt_fs_orders" AS SELECT * FROM "DWH"."gold"."gt_fs_orders__dbt_tmp_vw" 
+    OPTION (LABEL = ''dbt-fabric-dw'');
+');
+        
+
+    
+
+  
+[0m04:49:30.337994 [debug] [Thread-1 (]: SQL status: OK in 5.000 seconds
+[0m04:49:30.342645 [debug] [Thread-1 (]: Applying DROP to: "DWH"."gold"."gt_fs_orders__dbt_tmp_vw"
+[0m04:49:30.343424 [debug] [Thread-1 (]: dbt-fabric
+[0m04:49:30.344985 [debug] [Thread-1 (]: Using fabric connection "model.fabric_warehouse.gt_fs_orders"
+[0m04:49:30.345471 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_orders: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "node_id": "model.fabric_warehouse.gt_fs_orders"} */
+
+        USE [DWH];
+        select
+            sch.name as schema_name,
+            obj.name as view_name
+        from sys.sql_expression_dependencies refs
+        inner join sys.objects obj
+        on refs.referencing_id = obj.object_id
+        inner join sys.schemas sch
+        on obj.schema_id = sch.schema_id
+        where refs.referenced_database_name = 'DWH'
+        and refs.referenced_schema_name = 'gold'
+        and refs.referenced_entity_name = 'gt_fs_orders__dbt_tmp_vw'
+        and refs.referencing_class = 1
+        and obj.type = 'V'
+        
+    OPTION (LABEL = 'dbt-fabric-dw');
+
+      
+[0m04:49:30.385803 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m04:49:30.388789 [debug] [Thread-1 (]: Using fabric connection "model.fabric_warehouse.gt_fs_orders"
+[0m04:49:30.389641 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_orders: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "node_id": "model.fabric_warehouse.gt_fs_orders"} */
+
+      
+      
+    
+    USE [DWH];
+    EXEC('DROP view IF EXISTS "gold"."gt_fs_orders__dbt_tmp_vw";');
+
+[0m04:49:30.446764 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m04:49:30.454249 [debug] [Thread-1 (]: Using fabric connection "model.fabric_warehouse.gt_fs_orders"
+[0m04:49:30.454798 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_orders: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "fabric_warehouse", "target_name": "prod", "node_id": "model.fabric_warehouse.gt_fs_orders"} */
+
+    
+            CREATE STATISTICS OrderFactStatistics on "DWH"."gold"."gt_fs_orders" (OrderID) WITH FULLSCAN;
+
+
+  
+[0m04:49:30.696767 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m04:49:30.698237 [info ] [Thread-1 (]: 
+            CREATE STATISTICS OrderFactStatistics on "DWH"."gold"."gt_fs_orders" (OrderID) WITH FULLSCAN;
+
+
+[0m04:49:30.717080 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_orders: COMMIT
+[0m04:49:30.720117 [debug] [Thread-1 (]: On model.fabric_warehouse.gt_fs_orders: Close
+[0m04:49:30.724773 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'd7ca536f-a9a7-4d4b-9d9f-06c85ae1e89e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F2246896D0>]}
+[0m04:49:30.725607 [info ] [Thread-1 (]: 1 of 1 OK created sql incremental model gold.gt_fs_orders ...................... [[32mOK[0m in 5.53s]
+[0m04:49:30.726995 [debug] [Thread-1 (]: Finished running node model.fabric_warehouse.gt_fs_orders
+[0m04:49:30.729583 [debug] [MainThread]: On master: COMMIT
+[0m04:49:30.730072 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m04:49:30.730427 [debug] [MainThread]: Connection 'list_DWH' was properly closed.
+[0m04:49:30.730757 [debug] [MainThread]: Connection 'list_DWH_silver' was properly closed.
+[0m04:49:30.731083 [debug] [MainThread]: Connection 'list_DWH_gold' was properly closed.
+[0m04:49:30.731418 [debug] [MainThread]: Connection 'model.fabric_warehouse.gt_fs_orders' was properly closed.
+[0m04:49:30.731787 [info ] [MainThread]: 
+[0m04:49:30.732545 [info ] [MainThread]: Finished running 1 incremental model in 0 hours 0 minutes and 8.19 seconds (8.19s).
+[0m04:49:30.734039 [debug] [MainThread]: Command end result
+[0m04:49:30.809268 [debug] [MainThread]: Wrote artifact WritableManifest to D:\Python\dbt_project\dags\warehouse\target\manifest.json
+[0m04:49:30.813144 [debug] [MainThread]: Wrote artifact SemanticManifest to D:\Python\dbt_project\dags\warehouse\target\semantic_manifest.json
+[0m04:49:30.822122 [debug] [MainThread]: Wrote artifact RunExecutionResult to D:\Python\dbt_project\dags\warehouse\target\run_results.json
+[0m04:49:30.822706 [info ] [MainThread]: 
+[0m04:49:30.823750 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m04:49:30.824670 [info ] [MainThread]: 
+[0m04:49:30.825713 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=1
+[0m04:49:30.827460 [debug] [MainThread]: Command `dbt run` succeeded at 04:49:30.827269 after 10.71 seconds
+[0m04:49:30.828034 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F22441D700>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F2246B2DF0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F2246B2D50>]}
+[0m04:49:30.828549 [debug] [MainThread]: Flushing usage events
+[0m04:49:31.671329 [debug] [MainThread]: An error was encountered while trying to flush usage events
