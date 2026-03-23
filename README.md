@@ -631,4 +631,4 @@ WITH silver_table AS (
 - ![ALT ](gold_semantic_model.png)
 
 **Analysis**
-You can find an analysis of this data [here] (https://github.com/salano/Customers-and-Products-Analysis).
+You can find an analysis of this data [here](https://github.com/salano/Customers-and-Products-Analysis).
