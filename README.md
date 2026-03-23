@@ -565,7 +565,11 @@ FROM date_spine d;
 
 
 WITH silver_table AS (
-
+    /*
+        -Return key fields
+        return -1 if surrogate key is null
+        enrich by calculating revenue and tax fields
+    */
     SELECT
         coalesce(cust.sk_fs_customer, -1) sk_fs_customer,
         coalesce(prod.sk_fs_product, -1) sk_fs_product,
@@ -579,6 +583,7 @@ WITH silver_table AS (
         orders.Quantity,
         orders.UnitPrice,
         orders.TaxRate,
+        -- calculate revenue and tax fields
         round(cast(orders.Quantity as float) * orders.UnitPrice,2) AS total_revenue,
         case when orders.TaxRate = 0 then 0
                 else round(cast(orders.Quantity as float) * orders.UnitPrice * cast((orders.TaxRate/100) as float),2)
@@ -624,3 +629,6 @@ WITH silver_table AS (
 **Finally we can create a Semantic Model on the gold tables for reports**
 
 - ![ALT ](gold_semantic_model.png)
+
+**Analysis**
+You can find an analysis of this data [here] (https://github.com/salano/Customers-and-Products-Analysis).
